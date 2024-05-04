@@ -87,3 +87,5 @@ class PostImage(models.Model):
     post = models.ForeignKey(to=Post, on_delete=models.CASCADE, verbose_name="Изображение к посту", related_name="image",
                              )
     image = models.ImageField(upload_to="media/post_images", verbose_name="Изображение")
+
+

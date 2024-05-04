@@ -30,6 +30,7 @@ INSTALLED_APPS = [
 
     'users',
     'blog',
+    'comment',
 
     'mptt',
 ]
