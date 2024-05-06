@@ -14,6 +14,5 @@ class UserAdmin(admin.ModelAdmin):
     save_as = True
 
 
-
 admin.site.site_header = 'Админка helper'
 admin.site.index_title = 'Управление'
