@@ -1,3 +1,4 @@
+from pyexpat import model
 from django.db import models
 from blog.models import Post
 from django.conf import settings
@@ -16,3 +17,7 @@ class Comment(models.Model):
     class Meta:
         verbose_name = "Коммментарий"
         verbose_name_plural = "Комментарии"
+
+
+        
+
