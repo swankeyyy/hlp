@@ -69,7 +69,28 @@ img {
 
 /*  ----------------- /header -------------------  */
 
+/*  ----------------- main -------------------  */
+.card_img{
+    width: 30px;
+    height: 30px;
+}
+.card_time,
+.card_login{
+    font-size: 15px;
+}
 
+.card_login{
+    font-weight: bold;
+}
+
+.card_title h1{
+    font-size: 18px;
+}
+
+.card_description{
+    text-indent: 20px;
+}
+/*  ----------------- /main -------------------  */
 
 
 
