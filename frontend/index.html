@@ -19,14 +19,54 @@
 
 <!--  -->
 <div class="wrapper">
-    <header class="header ">
+    <header class="header">
         <div class="container-fluid">
-            <div class="row ">
-                <div class="col-lg-2 text-center d-flex align-items-center justify-content-center brand border_"><h1>hlp</h1></div>
-                <div class="col-lg text-center d-flex align-items-center justify-content-center border_">menu</div>
-                <div class="col-lg-2 d-flex align-items-center justify-content-center border_">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <i class="fa-solid fa-key"></i>
+            <div class="row header_row ">
+                <div class="col col-lg-2 text-center d-flex align-items-center justify-content-center logo d-flex py-2 header_link order-2 order-lg-1">
+                    <h1>
+                        <a href="#">hlp</a>
+                    </h1>
+                </div>
+                <div class="col-2 col-lg text-center d-flex align-items-center justify-content-center order-1 order-lg-2 border_">
+                    menu
+                </div>
+                <div class="col-2 col-lg-2 d-flex align-items-center justify-content-evenly order-3 header_icons header_link">
+
+                    <button type="button" class="btn header_search" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                        <i class="fa-solid fa-magnifying-glass fa-rotate-90 fa-xl  "></i>
+                    </button>
+
+
+                    <a href="#" class="btn"><i class="fa-solid fa-key fa-xl"></i></a>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Поиск</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <nav class="navbar bg-body-tertiary">
+                                        <div class="container-fluid">
+                                            <form class="d-flex" role="search">
+                                                <input class="form-control me-2" type="search" placeholder="Search"
+                                                       aria-label="Search">
+                                                <button class="btn btn-outline-success" type="submit">Search</button>
+                                            </form>
+                                        </div>
+                                    </nav>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> <!-- /Modal -->
+
+
                 </div> <!--  -->
             </div> <!--  -->
         </div> <!--  -->
