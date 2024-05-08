@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hlp</title>
+    <title>it_Hlp</title>
     <!--  bootstrap  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -19,12 +19,12 @@
 
 <!--  -->
 <div class="wrapper">
-    <header class="header  mb-4 sticky-top ">
+    <header class="header  mb-4 sticky-top " id="header-nav">
         <div class="container-fluid">
             <div class="row header_row align-items-center">
-                <div class="col col-lg-2 text-center d-flex align-items-center justify-content-center logo d-flex py-2 header_link order-2 order-lg-1">
+                <div class="col col-lg-2 d-flex align-items-center justify-content-center logo d-flex  header_link order-2 order-lg-1">
                     <h1>
-                        <a href="#">hlp</a>
+                        <a href="#">it_hlp</a>
                     </h1>
                 </div>
 
@@ -39,6 +39,11 @@
                             </button>
                             <div class="offcanvas offcanvas-start" id="offcanvasNavbar" tabindex="-1"
                                  aria-labelledby="offcanvasNavbarLabel">
+                                <div class="offcanvas-header">
+                                    <h5 class="offcanvas-title" id="offcanvasLabel">Меню</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                            aria-label="Close"></button>
+                                </div>
                                 <div class="offcanvas-body ">
                                     <ul class="navbar-nav ">
                                         <li class="nav-item">
@@ -111,18 +116,283 @@
                 <div class="col-2 col-lg-2 d-flex align-items-center justify-content-evenly order-3 header_icons header_link">
 
                     <button type="button" class="btn header_search" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
+                            data-bs-target="#exampleModal" title="Поиск">
                         <i class="fa-solid fa-magnifying-glass fa-rotate-90 fa-xl  "></i>
                     </button>
 
 
-                    <a href="#" class="btn"><i class="fa-solid fa-key fa-xl"></i></a>
+                    <a href="#" class="btn" title="Авторизация"><i class="fa-solid fa-key fa-xl"></i></a>
 
 
                 </div> <!--  -->
             </div> <!--  -->
         </div> <!--  -->
     </header> <!-- header -->
+
+
+    <main class="main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="container-fluid h-100 ">
+                        <div class="row body_row">
+                            <div class="col-12 body">
+                                <div class="body_item">
+                                    <div class=" my-1 card_ ">
+                                        <div class="d-flex d-flex align-items-end card_item mb-1">
+                                            <div class="card_img me-2">
+                                                <img src="assets/img/no-name.jpg" alt="">
+                                            </div>
+                                            <div class="card_login me-2">admin</div>
+                                            <div class="card_time">14 минут назад</div>
+
+
+                                        </div>
+                                        <div class="d-flex mb-2">
+                                            <div class="me-2"><i class="fa-brands fa-python fa-xl"
+                                                                 style="color: #FFD43B;"></i>
+                                            </div>
+                                            <div class="me-2"><span class="badge text-bg-secondary">Frontend</span>
+                                            </div>
+                                            <div class="me-2"><span class="badge text-bg-secondary">Bootstrap</span>
+                                            </div>
+                                            <div class="me-2"><span class="badge text-bg-secondary">CSS</span></div>
+                                            <div class="me-2"><span class="badge text-bg-secondary">HTML</span></div>
+
+                                        </div>
+                                        <div class="card_title"><h1>Подключаем Offcanvas для меню с помощью
+                                            Bootstrap.</h1>
+                                        </div>
+                                        <div class=""><img src="assets/img/it.png" alt=""></div>
+                                        <div class="card_description">
+                                            <p>Offcanvas — это компонент боковой панели, который можно переключать с
+                                                помощью
+                                                JavaScript, чтобы он появлялся с левого, правого, верхнего или нижнего
+                                                края
+                                                области просмотра. Кнопки или привязки используются в качестве
+                                                триггеров,
+                                                прикрепленных к конкретным элементам, которые вы переключаете, а
+                                                dataатрибуты
+                                                используются для вызова нашего JavaScript.</p>
+
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex ">
+                                                <div class="d-flex me-2 " title="Количество просмотров">
+                                                    <div class=""><i class="fa-regular fa-eye "></i></div>
+                                                    <div class=""><p>2</p></div>
+                                                </div>
+                                                <div class="d-flex me-2" title="Комментарии">
+                                                    <div class=""><i class="fa-regular fa-comment"></i></div>
+                                                    <div class="">3</div>
+                                                </div>
+                                                <div class="d-flex me-2" title="Поделиться">
+                                                    <div class="card_link"><a href="#"><i class="fa-solid fa-share"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex me-2" title="Добавить в закладки">
+                                                    <div class=""><i class="fa-regular fa-bookmark"></i></div>
+
+                                                </div>
+                                            </div>
+                                            <div class="card_link"><a href="">Подробнее</a></div>
+                                        </div>
+
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="body_item">
+                                    <div class=" my-1 card_ ">
+                                        <div class="d-flex d-flex align-items-end card_item mb-1">
+                                            <div class="card_img me-2">
+                                                <img src="assets/img/no-name.jpg" alt="">
+                                            </div>
+                                            <div class="card_login me-2">admin</div>
+                                            <div class="card_time">14 минут назад</div>
+
+
+                                        </div>
+                                        <div class="d-flex mb-2">
+                                            <div class="me-2"><i class="fa-brands fa-python fa-xl"
+                                                                 style="color: #FFD43B;"></i>
+                                            </div>
+                                            <div class="me-2"><span class="badge text-bg-secondary">Frontend</span>
+                                            </div>
+                                            <div class="me-2"><span class="badge text-bg-secondary">Bootstrap</span>
+                                            </div>
+                                            <div class="me-2"><span class="badge text-bg-secondary">CSS</span></div>
+                                            <div class="me-2"><span class="badge text-bg-secondary">HTML</span></div>
+
+                                        </div>
+                                        <div class="card_title"><h1>Подключаем Offcanvas для меню с помощью
+                                            Bootstrap.</h1>
+                                        </div>
+                                        <div class=""><img src="assets/img/it.png" alt=""></div>
+                                        <div class="card_description">
+                                            <p>Offcanvas — это компонент боковой панели, который можно переключать с
+                                                помощью
+                                                JavaScript, чтобы он появлялся с левого, правого, верхнего или нижнего
+                                                края
+                                                области просмотра. Кнопки или привязки используются в качестве
+                                                триггеров,
+                                                прикрепленных к конкретным элементам, которые вы переключаете, а
+                                                dataатрибуты
+                                                используются для вызова нашего JavaScript.</p>
+
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex ">
+                                                <div class="d-flex me-2 " title="Количество просмотров">
+                                                    <div class=""><i class="fa-regular fa-eye "></i></div>
+                                                    <div class=""><p>2</p></div>
+                                                </div>
+                                                <div class="d-flex me-2" title="Комментарии">
+                                                    <div class=""><i class="fa-regular fa-comment"></i></div>
+                                                    <div class="">3</div>
+                                                </div>
+                                                <div class="d-flex me-2" title="Поделиться">
+                                                    <div class="card_link"><a href="#"><i class="fa-solid fa-share"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex me-2" title="Добавить в закладки">
+                                                    <div class=""><i class="fa-regular fa-bookmark"></i></div>
+
+                                                </div>
+                                            </div>
+                                            <div class="card_link"><a href="">Подробнее</a></div>
+                                        </div>
+
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="body_item">
+                                    <div class=" my-1 card_ ">
+                                        <div class="d-flex d-flex align-items-end card_item mb-1">
+                                            <div class="card_img me-2">
+                                                <img src="assets/img/no-name.jpg" alt="">
+                                            </div>
+                                            <div class="card_login me-2">admin</div>
+                                            <div class="card_time">14 минут назад</div>
+
+
+                                        </div>
+                                        <div class="d-flex mb-2">
+                                            <div class="me-2"><i class="fa-brands fa-python fa-xl"
+                                                                 style="color: #FFD43B;"></i>
+                                            </div>
+                                            <div class="me-2"><span class="badge text-bg-secondary">Frontend</span>
+                                            </div>
+                                            <div class="me-2"><span class="badge text-bg-secondary">Bootstrap</span>
+                                            </div>
+                                            <div class="me-2"><span class="badge text-bg-secondary">CSS</span></div>
+                                            <div class="me-2"><span class="badge text-bg-secondary">HTML</span></div>
+
+                                        </div>
+                                        <div class="card_title"><h1>Подключаем Offcanvas для меню с помощью
+                                            Bootstrap.</h1>
+                                        </div>
+                                        <div class=""><img src="assets/img/it.png" alt=""></div>
+                                        <div class="card_description">
+                                            <p>Offcanvas — это компонент боковой панели, который можно переключать с
+                                                помощью
+                                                JavaScript, чтобы он появлялся с левого, правого, верхнего или нижнего
+                                                края
+                                                области просмотра. Кнопки или привязки используются в качестве
+                                                триггеров,
+                                                прикрепленных к конкретным элементам, которые вы переключаете, а
+                                                dataатрибуты
+                                                используются для вызова нашего JavaScript.</p>
+
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex ">
+                                                <div class="d-flex me-2 " title="Количество просмотров">
+                                                    <div class=""><i class="fa-regular fa-eye "></i></div>
+                                                    <div class=""><p>2</p></div>
+                                                </div>
+                                                <div class="d-flex me-2" title="Комментарии">
+                                                    <div class=""><i class="fa-regular fa-comment"></i></div>
+                                                    <div class="">3</div>
+                                                </div>
+                                                <div class="d-flex me-2" title="Поделиться">
+                                                    <div class="card_link"><a href="#"><i class="fa-solid fa-share"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex me-2" title="Добавить в закладки">
+                                                    <div class=""><i class="fa-regular fa-bookmark"></i></div>
+
+                                                </div>
+                                            </div>
+                                            <div class="card_link"><a href="">Подробнее</a></div>
+                                        </div>
+
+                                    </div>
+                                    <hr>
+                                </div>
+
+                            </div>
+                            <div class="paginate d-flex justify-content-center">
+                                <div class="">
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination_">
+                                            <li class="page-item me-2">
+                                                <a class="page-link" href="#" aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                </a>
+                                            </li>
+                                            <li class="page-item me-2"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item me-2"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item me-2"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item ">
+                                                <a class="page-link" href="#" aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-3 d-none d-lg-block">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid asperiores beatae deleniti
+                        eligendi facere quos, veniam. Animi asperiores, aspernatur consectetur consequatur enim est
+                        libero non quis reiciendis repellat sequi, suscipit!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid asperiores beatae deleniti
+                        eligendi facere quos, veniam. Animi asperiores, aspernatur consectetur consequatur enim est
+                        libero non quis reiciendis repellat sequi, suscipit!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid asperiores beatae deleniti
+                        eligendi facere quos, veniam. Animi asperiores, aspernatur consectetur consequatur enim est
+                        libero non quis reiciendis repellat sequi, suscipit!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid asperiores beatae deleniti
+                        eligendi facere quos, veniam. Animi asperiores, aspernatur consectetur consequatur enim est
+                        libero non quis reiciendis repellat sequi, suscipit!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid asperiores beatae deleniti
+                        eligendi facere quos, veniam. Animi asperiores, aspernatur consectetur consequatur enim est
+                        libero non quis reiciendis repellat sequi, suscipit!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid asperiores beatae deleniti
+                        eligendi facere quos, veniam. Animi asperiores, aspernatur consectetur consequatur enim est
+                        libero non quis reiciendis repellat sequi, suscipit!</p>
+
+                </div>
+            </div>
+        </div>
+
+    </main> <!-- main -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="d-flex justify-content-center py-3">
+                    <p>footer</p>
+                </div>
+            </div>
+        </div>
+    </footer> <!-- footer -->
 
     <!-- modal window for search -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -151,135 +421,6 @@
     </div>
     <!-- /modal window for search -->
 
-    <main class="main">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-12 my-1 card_ ">
-                                <div class="d-flex d-flex align-items-end card_item">
-                                    <div class="card_img me-2">
-                                        <img src="assets/img/no-name.jpg" alt="">
-                                    </div>
-                                    <div class="card_login me-2">admin</div>
-                                    <div class="card_time">14 минут назад</div>
-
-
-                                </div>
-                                <div class="d-flex mb-2">
-                                    <div class="me-2"><span class="badge text-bg-secondary">Frontend</span></div>
-                                    <div class="me-2"><span class="badge text-bg-secondary">Bootstrap</span></div>
-                                    <div class="me-2"><span class="badge text-bg-secondary">CSS</span></div>
-                                    <div class="me-2"><span class="badge text-bg-secondary">HTML</span></div>
-
-                                </div>
-                                <div class="card_title"><h1>Lorem ipsum dolor sit amet</h1></div>
-                                <div class="card_description">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
-                                        asperiores autem
-                                        doloremque ipsa iure, laboriosam nesciunt nostrum qui quidem quo ratione rem
-                                        repellendus
-                                        repudiandae, sit
-                                        temporibus? Atque ipsum laudantium nobis.</p>
-
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <div class="">
-                                        <div class="d-flex">
-                                            <div class=""><i class="fa-regular fa-eye "></i></div>
-                                            <div class=""><p>2</p></div>
-
-                                        </div>
-                                        <div class=""></div>
-                                    </div>
-                                    <div class="">Подробнее</div>
-                                </div>
-
-                            </div>
-                            <hr>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus asperiores autem
-                                doloremque ipsa iure, laboriosam nesciunt nostrum qui quidem quo ratione rem repellendus
-                                repudiandae, sit
-                                temporibus? Atque ipsum laudantium nobis.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus asperiores autem
-                                doloremque ipsa iure, laboriosam nesciunt nostrum qui quidem quo ratione rem repellendus
-                                repudiandae, sit
-                                temporibus? Atque ipsum laudantium nobis.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus asperiores autem
-                                doloremque ipsa iure, laboriosam nesciunt nostrum qui quidem quo ratione rem repellendus
-                                repudiandae, sit
-                                temporibus? Atque ipsum laudantium nobis.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus asperiores autem
-                                doloremque ipsa iure, laboriosam nesciunt nostrum qui quidem quo ratione rem repellendus
-                                repudiandae, sit
-                                temporibus? Atque ipsum laudantium nobis.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus asperiores autem
-                                doloremque ipsa iure, laboriosam nesciunt nostrum qui quidem quo ratione rem repellendus
-                                repudiandae, sit
-                                temporibus? Atque ipsum laudantium nobis.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus asperiores autem
-                                doloremque ipsa iure, laboriosam nesciunt nostrum qui quidem quo ratione rem repellendus
-                                repudiandae, sit
-                                temporibus? Atque ipsum laudantium nobis.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus asperiores autem
-                                doloremque ipsa iure, laboriosam nesciunt nostrum qui quidem quo ratione rem repellendus
-                                repudiandae, sit
-                                temporibus? Atque ipsum laudantium nobis.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus asperiores autem
-                                doloremque ipsa iure, laboriosam nesciunt nostrum qui quidem quo ratione rem repellendus
-                                repudiandae, sit
-                                temporibus? Atque ipsum laudantium nobis.</p>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus asperiores autem
-                                doloremque ipsa iure, laboriosam nesciunt nostrum qui quidem quo ratione rem repellendus
-                                repudiandae, sit
-                                temporibus? Atque ipsum laudantium nobis.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus asperiores autem
-                                doloremque ipsa iure, laboriosam nesciunt nostrum qui quidem quo ratione rem repellendus
-                                repudiandae, sit
-                                temporibus? Atque ipsum laudantium nobis.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus asperiores autem
-                                doloremque ipsa iure, laboriosam nesciunt nostrum qui quidem quo ratione rem repellendus
-                                repudiandae, sit
-                                temporibus? Atque ipsum laudantium nobis.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus asperiores autem
-                                doloremque ipsa iure, laboriosam nesciunt nostrum qui quidem quo ratione rem repellendus
-                                repudiandae, sit
-                                temporibus? Atque ipsum laudantium nobis.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus asperiores autem
-                                doloremque ipsa iure, laboriosam nesciunt nostrum qui quidem quo ratione rem repellendus
-                                repudiandae, sit
-                                temporibus? Atque ipsum laudantium nobis.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus asperiores autem
-                                doloremque ipsa iure, laboriosam nesciunt nostrum qui quidem quo ratione rem repellendus
-                                repudiandae, sit
-                                temporibus? Atque ipsum laudantium nobis.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus asperiores autem
-                                doloremque ipsa iure, laboriosam nesciunt nostrum qui quidem quo ratione rem repellendus
-                                repudiandae, sit
-                                temporibus? Atque ipsum laudantium nobis.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3 ">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid asperiores beatae deleniti
-                        eligendi facere quos, veniam. Animi asperiores, aspernatur consectetur consequatur enim est
-                        libero non quis reiciendis repellat sequi, suscipit!</p>
-                </div>
-            </div>
-        </div>
-
-    </main> <!-- main -->
-    <footer class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="d-flex justify-content-center py-3">
-                    <p>footer</p>
-                </div>
-            </div>
-        </div>
-    </footer> <!-- footer -->
 </div> <!-- wrapper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

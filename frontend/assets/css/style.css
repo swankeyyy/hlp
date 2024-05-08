@@ -51,7 +51,8 @@ img {
 
     background: #212020FF;
     box-shadow: 0 10px 10px rgba(0, 0, 0, .3);
-
+    padding: 1rem 0;
+    transition: all .3s;
 }
 
 
@@ -67,41 +68,85 @@ img {
     color: var(--while-color);
 }
 
+
+.headernav-scroll {
+    padding: 0;
+!important;
+}
+
+
 /*  ----------------- /header -------------------  */
 
 /*  ----------------- main -------------------  */
-.card_img{
+.card_img {
     width: 30px;
     height: 30px;
 }
+
 .card_time,
-.card_login{
+.card_login {
     font-size: 15px;
 }
 
-.card_login{
+.card_login {
     font-weight: bold;
 }
 
-.card_title h1{
+.card_title h1 {
     font-size: 18px;
 }
 
-.card_description{
+.card_description {
     text-indent: 20px;
 }
 
+.card_time {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.card_link a {
+    color: var(--title-color);
+    transition: all .3s;
+    text-decoration: none;
+}
+
+.card_link a:hover {
+    color: #575353;
+}
+
+.body {
+    overflow: hidden;
+    flex: 1 1 auto;
+}
+
+.body_row {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.pagination_ {
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+}
+
+
+.pagination_ .page-link {
+    font-size: 20px;
+
+}
 
 /*  ----------------- /main -------------------  */
 
 
-
 /*  ----------------- footer -------------------  */
 
-.footer{
+.footer {
     background: #212020FF;
     color: var(--menu-color);
 
 }
+
 /*  ----------------- /footer -------------------  */
 
