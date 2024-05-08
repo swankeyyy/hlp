@@ -116,12 +116,13 @@
                 <div class="col-2 col-lg-2 d-flex align-items-center justify-content-evenly order-3 header_icons header_link">
 
                     <button type="button" class="btn header_search" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal" title="Поиск">
+                            data-bs-target="#searchModal" title="Поиск">
                         <i class="fa-solid fa-magnifying-glass fa-rotate-90 fa-xl  "></i>
                     </button>
-
-
-                    <a href="#" class="btn" title="Авторизация"><i class="fa-solid fa-key fa-xl"></i></a>
+                    <button type="button" class="btn header_search" data-bs-toggle="modal"
+                            data-bs-target="#loginModal" title="Авторизация">
+                        <i class="fa-solid fa-key fa-xl"></i>
+                    </button>
 
 
                 </div> <!--  -->
@@ -406,9 +407,6 @@
                             </div>
 
 
-
-
-
                         </div>
                     </div>
 
@@ -421,22 +419,27 @@
 
 
     <footer class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="d-flex justify-content-center py-3">
-                    <p>footer</p>
+        <div class="container">
+            <div class=" row my-4">
+                <div class="col-md-6"><h5>it_hlp blog © 2024</h5></div>
+
+                <div class="col-md-6 d-flex justify-content-md-end ">
+                    <div class="me-2"><i class="fa-brands fa-square-facebook fa-xl"></i></div>
+                    <div class="me-2"><i class="fa-brands fa-vk fa-xl"></i></div>
+                    <div class="me-2"><i class="fa-brands fa-square-instagram fa-xl"></i></div>
+                    <div class=""><i class="fa-brands fa-telegram fa-xl"></i></div>
                 </div>
             </div>
         </div>
     </footer> <!-- footer -->
 
     <!-- modal window for search -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Поиск</h1>
+                    <h1 class="modal-title fs-5" id="searchModalLabel">Поиск</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                 </div>
@@ -447,6 +450,47 @@
                                 <input class="form-control me-2" type="search" placeholder="Search"
                                        aria-label="Search">
                                 <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- /modal window for search -->
+
+    <!-- modal window for search -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="loginModalLabel">Авторизация</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <nav class="navbar bg-body-tertiary">
+                        <div class="container-fluid">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                           aria-describedby="emailHelp">
+                                    <div id="emailHelp" class="form-text">We'll never share your email with anyone
+                                        else.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1">
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>
                     </nav>
