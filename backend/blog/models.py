@@ -4,8 +4,6 @@ from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
 
-
-
 class Language(models.Model):
     """language model for LP`s like python, JS"""
 
@@ -60,10 +58,11 @@ class Category(MPTTModel):
 
 
 class Post(models.Model):
-
     """Single Post model, with null author if author is admin, with category and tags"""
 
     name = models.CharField(max_length=150, verbose_name="Название поста")
+    preview_image = models.ImageField(upload_to='media/previews', verbose_name="Изображение к посту для ленты",
+                                      null=True, blank=True)
     url = models.SlugField(unique=True, max_length=50, verbose_name="URL")
     description = models.TextField(verbose_name="Контент")
     category = models.ForeignKey(to=Category, on_delete=models.CASCADE, related_name="post", verbose_name="Категория")
@@ -86,8 +85,7 @@ class Post(models.Model):
 class PostImage(models.Model):
     """images for post(if it needs)"""
     name = models.CharField(max_length=50, verbose_name="Название изображения")
-    post = models.ForeignKey(to=Post, on_delete=models.CASCADE, verbose_name="Изображение к посту", related_name="image",
+    post = models.ForeignKey(to=Post, on_delete=models.CASCADE, verbose_name="Изображение к посту",
+                             related_name="image",
                              )
     image = models.ImageField(upload_to="media/post_images", verbose_name="Изображение")
-
-
