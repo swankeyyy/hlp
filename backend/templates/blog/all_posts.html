@@ -1,234 +1,105 @@
 {% extends 'UI/include/main.html' %}
 {% load static %}
 
-
 {% block content %}
-    <div class="col">
-        <div class="container-fluid h-100 ">
-            <div class="row body_row">
-                <div class="col-12 body">
-
-
-                    <div class="body_item">
-                        <div class=" my-1 card_ ">
-                            <div class="d-flex d-flex align-items-end card_item mb-1">
-                                <div class="card_img me-2">
-                                    <img src="{% static "img/no-name.jpg" %}" alt="">
-                                </div>
-                                <div class="card_login me-2">admin</div>
-                                <div class="card_time">14 минут назад</div>
-
-
-                            </div>
-                            <div class="d-flex mb-2">
-                                <div class="me-2"><i class="fa-brands fa-python fa-xl"
-                                                     style="color: #FFD43B;"></i>
-                                </div>
-                                <div class="me-2"><span class="badge text-bg-secondary">Frontend</span>
-                                </div>
-                                <div class="me-2"><span class="badge text-bg-secondary">Bootstrap</span>
-                                </div>
-                                <div class="me-2"><span class="badge text-bg-secondary">CSS</span></div>
-                                <div class="me-2"><span class="badge text-bg-secondary">HTML</span></div>
-
-                            </div>
-                            <div class="card_title "><h2>Подключаем Offcanvas для меню с помощью
-                                Bootstrap.</h2>
-                            </div>
-                            <div class="my-2"><img src="{% static "img/it.png" %}" alt=""></div>
-                            <div class="card_description">
-                                <p>Offcanvas — это компонент боковой панели, который можно переключать с
-                                    помощью
-                                    JavaScript, чтобы он появлялся с левого, правого, верхнего или нижнего
-                                    края
-                                    области просмотра. Кнопки или привязки используются в качестве
-                                    триггеров,
-                                    прикрепленных к конкретным элементам, которые вы переключаете, а
-                                    dataатрибуты
-                                    используются для вызова нашего JavaScript.</p>
-
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex ">
-                                    <div class="d-flex me-2 " title="Количество просмотров">
-                                        <div class=""><i class="fa-regular fa-eye "></i></div>
-                                        <div class=""><p>2</p></div>
-                                    </div>
-                                    <div class="d-flex me-2" title="Комментарии">
-                                        <div class=""><i class="fa-regular fa-comment"></i></div>
-                                        <div class="">3</div>
-                                    </div>
-                                    <div class="d-flex me-2" title="Поделиться">
-                                        <div class="card_link"><a href="#"><i class="fa-solid fa-share"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex me-2" title="Добавить в закладки">
-                                        <div class=""><i class="fa-regular fa-bookmark"></i></div>
-
-                                    </div>
-                                </div>
-                                <div class="card_link"><a href="single.html">Подробнее</a></div>
-                            </div>
-
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="body_item">
-                        <div class=" my-1 card_ ">
-                            <div class="d-flex d-flex align-items-end card_item mb-1">
-                                <div class="card_img me-2">
-                                    <img src="{% static "img/no-name.jpg" %}" alt="">
-                                </div>
-                                <div class="card_login me-2">admin</div>
-                                <div class="card_time">14 минут назад</div>
-
-
-                            </div>
-                            <div class="d-flex mb-2">
-                                <div class="me-2"><i class="fa-brands fa-python fa-xl"
-                                                     style="color: #FFD43B;"></i>
-                                </div>
-                                <div class="me-2"><span class="badge text-bg-secondary">Frontend</span>
-                                </div>
-                                <div class="me-2"><span class="badge text-bg-secondary">Bootstrap</span>
-                                </div>
-                                <div class="me-2"><span class="badge text-bg-secondary">CSS</span></div>
-                                <div class="me-2"><span class="badge text-bg-secondary">HTML</span></div>
-
-                            </div>
-                            <div class="card_title "><h2>Подключаем Offcanvas для меню с помощью
-                                Bootstrap.</h2>
-                            </div>
-                            <div class="my-2"><img src="{% static "img/it.png" %}" alt=""></div>
-                            <div class="card_description">
-                                <p>Offcanvas — это компонент боковой панели, который можно переключать с
-                                    помощью
-                                    JavaScript, чтобы он появлялся с левого, правого, верхнего или нижнего
-                                    края
-                                    области просмотра. Кнопки или привязки используются в качестве
-                                    триггеров,
-                                    прикрепленных к конкретным элементам, которые вы переключаете, а
-                                    dataатрибуты
-                                    используются для вызова нашего JavaScript.</p>
-
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex ">
-                                    <div class="d-flex me-2 " title="Количество просмотров">
-                                        <div class=""><i class="fa-regular fa-eye "></i></div>
-                                        <div class=""><p>2</p></div>
-                                    </div>
-                                    <div class="d-flex me-2" title="Комментарии">
-                                        <div class=""><i class="fa-regular fa-comment"></i></div>
-                                        <div class="">3</div>
-                                    </div>
-                                    <div class="d-flex me-2" title="Поделиться">
-                                        <div class="card_link"><a href="#"><i class="fa-solid fa-share"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex me-2" title="Добавить в закладки">
-                                        <div class=""><i class="fa-regular fa-bookmark"></i></div>
-
-                                    </div>
-                                </div>
-                                <div class="card_link"><a href="single.html">Подробнее</a></div>
-                            </div>
-
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="body_item">
-                        <div class=" my-1 card_ ">
-                            <div class="d-flex d-flex align-items-end card_item mb-1">
-                                <div class="card_img me-2">
-                                    <img src="{% static "img/no-name.jpg" %}" alt="">
-                                </div>
-                                <div class="card_login me-2">admin</div>
-                                <div class="card_time">14 минут назад</div>
-
-
-                            </div>
-                            <div class="d-flex mb-2">
-                                <div class="me-2"><i class="fa-brands fa-python fa-xl"
-                                                     style="color: #FFD43B;"></i>
-                                </div>
-                                <div class="me-2"><span class="badge text-bg-secondary">Frontend</span>
-                                </div>
-                                <div class="me-2"><span class="badge text-bg-secondary">Bootstrap</span>
-                                </div>
-                                <div class="me-2"><span class="badge text-bg-secondary">CSS</span></div>
-                                <div class="me-2"><span class="badge text-bg-secondary">HTML</span></div>
-
-                            </div>
-                            <div class="card_title "><h2>Подключаем Offcanvas для меню с помощью
-                                Bootstrap.</h2>
-                            </div>
-                            <div class="my-2"><img src="{% static "img/it.png" %}" alt=""></div>
-                            <div class="card_description">
-                                <p>Offcanvas — это компонент боковой панели, который можно переключать с
-                                    помощью
-                                    JavaScript, чтобы он появлялся с левого, правого, верхнего или нижнего
-                                    края
-                                    области просмотра. Кнопки или привязки используются в качестве
-                                    триггеров,
-                                    прикрепленных к конкретным элементам, которые вы переключаете, а
-                                    dataатрибуты
-                                    используются для вызова нашего JavaScript.</p>
-
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex ">
-                                    <div class="d-flex me-2 " title="Количество просмотров">
-                                        <div class=""><i class="fa-regular fa-eye "></i></div>
-                                        <div class=""><p>2</p></div>
-                                    </div>
-                                    <div class="d-flex me-2" title="Комментарии">
-                                        <div class=""><i class="fa-regular fa-comment"></i></div>
-                                        <div class="">3</div>
-                                    </div>
-                                    <div class="d-flex me-2" title="Поделиться">
-                                        <div class="card_link"><a href="#"><i class="fa-solid fa-share"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex me-2" title="Добавить в закладки">
-                                        <div class=""><i class="fa-regular fa-bookmark"></i></div>
-
-                                    </div>
-                                </div>
-                                <div class="card_link"><a href="single.html">Подробнее</a></div>
-                            </div>
-
-                        </div>
-                        <hr>
-                    </div>
-
-
+  <div class="col">
+    <div class="container-fluid h-100">
+      <div class="row body_row">
+        <div class="col-12 body">
+          {% for post in posts %}
+            <div class="body_item">
+              <div class="my-1 card_">
+                <div class="d-flex d-flex align-items-end card_item mb-1">
+                  <div class="card_img me-2">
+                    <img src="{% static 'img/no-name.jpg' %}" alt="" />
+                  </div>
+                  {% if post.author %}
+                  <div class="card_login me-2">{{ post.author.username }}</div>
+                  {% else %}
+                  <div class="card_login me-2">admin</div>
+                  {% endif %}
+                  <div class="card_time">14 минут назад</div>
                 </div>
-                <div class="paginate d-flex justify-content-center">
-                    <div class="">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination_">
-                                <li class="page-item me-2">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="page-item me-2"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item me-2"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item me-2"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item ">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+                <div class="d-flex mb-2">
+                  <div class="me-2">
+                    {{post.language.icon|safe}}
+                  </div>
+                  {% for tag in post.tag.all %}
+                  <div class="me-2">
+                    <span class="badge text-bg-secondary">{{ tag.name }}</span>
+                  </div>
+                  {%endfor%}
+                  
                 </div>
-
-
+                <div class="card_title">
+                  <h2>{{ post.name }}</h2>
+                </div>
+                <div class="my-2">
+                  <img src="{% static 'img/it.png' %}" alt="" />
+                </div>
+                <div class="card_description">
+                  <p>{{ post.description|truncatechars:600 }}</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex">
+                    <div class="d-flex me-2" title="Количество просмотров">
+                      <div class="">
+                        <i class="fa-regular fa-eye"></i>
+                      </div>
+                      <div class="">
+                        <p>{{ post.total_views }}</p>
+                      </div>
+                    </div>
+                    <div class="d-flex me-2" title="Комментарии">
+                      <div class="">
+                        <i class="fa-regular fa-comment"></i>
+                      </div>
+                      <div class="">{{ post.comment.count }}</div>
+                    </div>
+                    <div class="d-flex me-2" title="Поделиться">
+                      <div class="card_link">
+                        <a href="{{ post.url }}"><i class="fa-solid fa-share"></i></a>
+                      </div>
+                    </div>
+                    <div class="d-flex me-2" title="Добавить в закладки">
+                      <div class="">
+                        <i class="fa-regular fa-bookmark"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card_link">
+                    <a href="#">Подробнее</a>
+                  </div>
+                </div>
+              </div>
+              <hr />
             </div>
+          {% endfor %}
         </div>
+        <div class="paginate d-flex justify-content-center">
+          <div class="">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination_">
+                <li class="page-item me-2">
+                  <a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+                </li>
+                <li class="page-item me-2">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item me-2">
+                  <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item me-2">
+                  <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
     </div>
-
-{% endblock content %}
+  </div>
+{% endblock %}
