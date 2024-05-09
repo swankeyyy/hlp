@@ -4,8 +4,6 @@ from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
 
-
-
 class Language(models.Model):
     """language model for LP`s like python, JS"""
 
@@ -13,6 +11,7 @@ class Language(models.Model):
     description = models.TextField(verbose_name="Описание", blank=True, null=True)
     image = models.ImageField(upload_to="media/lang_images", blank=True, null=True, verbose_name="Значок ЯП")
     url = models.SlugField(unique=True, max_length=50, verbose_name="URL")
+    icon = models.CharField(max_length=100, verbose_name="Font awesome icon", blank=True, null=True)
 
     def __str__(self):
         return f'{self.name}'
@@ -44,6 +43,7 @@ class Category(MPTTModel):
     description = models.TextField(verbose_name="Описание", blank=True, null=True, default="Информация скоро обновится")
     url = models.SlugField(unique=True, max_length=50, verbose_name="URL")
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
+    icon = models.CharField(max_length=100, verbose_name="Font Awesome Icon", blank=True, null=True)
 
     def __str__(self):
         return f'{self.name}'
@@ -58,16 +58,17 @@ class Category(MPTTModel):
 
 
 class Post(models.Model):
-
     """Single Post model, with null author if author is admin, with category and tags"""
 
     name = models.CharField(max_length=150, verbose_name="Название поста")
+    preview_image = models.ImageField(upload_to='media/previews', verbose_name="Изображение к посту для ленты",
+                                      null=True, blank=True)
     url = models.SlugField(unique=True, max_length=50, verbose_name="URL")
     description = models.TextField(verbose_name="Контент")
     category = models.ForeignKey(to=Category, on_delete=models.CASCADE, related_name="post", verbose_name="Категория")
     language = models.ForeignKey(to=Language, on_delete=models.SET_NULL, null=True, blank=True, related_name="post",
                                  verbose_name="ЯП")
-    tag = models.ManyToManyField(to=Tag, verbose_name="Теги")
+    tag = models.ManyToManyField(to=Tag, verbose_name="Теги", null=True, blank=True)
     author = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True,
                                verbose_name="Автор поста, если пост предложен пользователем")
     is_published = models.BooleanField(default=True)
@@ -84,8 +85,7 @@ class Post(models.Model):
 class PostImage(models.Model):
     """images for post(if it needs)"""
     name = models.CharField(max_length=50, verbose_name="Название изображения")
-    post = models.ForeignKey(to=Post, on_delete=models.CASCADE, verbose_name="Изображение к посту", related_name="image",
+    post = models.ForeignKey(to=Post, on_delete=models.CASCADE, verbose_name="Изображение к посту",
+                             related_name="image",
                              )
     image = models.ImageField(upload_to="media/post_images", verbose_name="Изображение")
-
-
