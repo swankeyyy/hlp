@@ -1,0 +1,13 @@
+{% extends 'blog/../base.html' %}
+
+{% block content %}
+
+    <h1>TEst content</h1>
+
+    {% for post in posts %}
+
+        <div class="h4">{{ post.name }}</div>
+
+    {% endfor %}
+
+{% endblock content %}
