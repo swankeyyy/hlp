@@ -13,6 +13,7 @@ class Language(models.Model):
     description = models.TextField(verbose_name="Описание", blank=True, null=True)
     image = models.ImageField(upload_to="media/lang_images", blank=True, null=True, verbose_name="Значок ЯП")
     url = models.SlugField(unique=True, max_length=50, verbose_name="URL")
+    icon = models.CharField(max_length=100, verbose_name="Font awesome icon", blank=True, null=True)
 
     def __str__(self):
         return f'{self.name}'
@@ -44,6 +45,7 @@ class Category(MPTTModel):
     description = models.TextField(verbose_name="Описание", blank=True, null=True, default="Информация скоро обновится")
     url = models.SlugField(unique=True, max_length=50, verbose_name="URL")
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
+    icon = models.CharField(max_length=100, verbose_name="Font Awesome Icon", blank=True, null=True)
 
     def __str__(self):
         return f'{self.name}'
