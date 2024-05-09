@@ -69,7 +69,7 @@ class Post(models.Model):
     category = models.ForeignKey(to=Category, on_delete=models.CASCADE, related_name="post", verbose_name="Категория")
     language = models.ForeignKey(to=Language, on_delete=models.SET_NULL, null=True, blank=True, related_name="post",
                                  verbose_name="ЯП")
-    tag = models.ManyToManyField(to=Tag, verbose_name="Теги")
+    tag = models.ManyToManyField(to=Tag, verbose_name="Теги", null=True, blank=True)
     author = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True,
                                verbose_name="Автор поста, если пост предложен пользователем")
     is_published = models.BooleanField(default=True)
