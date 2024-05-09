@@ -3,7 +3,7 @@ from django.views import View
 from django.views.generic.list import ListView
 from .models import Post
 
-
+# asdsad
 class AllPostsView(ListView):
     model = Post
     template_name = 'blog/all_posts.html'
