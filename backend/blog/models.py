@@ -57,7 +57,7 @@ class Category(MPTTModel):
         verbose_name_plural = "Категории"
 
 
-class Post(MPTTModel):
+class Post(models.Model):
     """Single Post model, with null author if author is admin, with category and tags"""
 
     name = models.CharField(max_length=150, verbose_name="Название поста")
