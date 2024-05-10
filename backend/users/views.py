@@ -25,10 +25,17 @@ class LoginUser(SuccessMessageMixin, LoginView):
     авторизация
     """
     form_class = LoginUserForm
-    template_name = 'users/login.html'
+    # template_name = 'users/login.html'
+    template_name = 'base.html'
     extra_context = {'title': 'Авторизация'}
     success_message = "Вы успешно авторизованы! "
 
     def get_success_url(self):
         # перенапровление
         return reverse_lazy('main_page_view')
+
+
+
+def logout_user(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('main_page_view'))
