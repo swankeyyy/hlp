@@ -109,7 +109,7 @@ class Post(models.Model):
         related_name="post",
         verbose_name="ЯП",
     )
-    tag = models.ManyToManyField(to=Tag, verbose_name="Теги", null=True, blank=True)
+    tag = models.ManyToManyField(to=Tag, verbose_name="Теги", blank=True)
     author = models.ForeignKey(
         to=settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
