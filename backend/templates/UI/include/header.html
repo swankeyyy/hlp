@@ -6,7 +6,7 @@
         <div class="row header_row align-items-center">
             <div class="col-4 col-lg-2 d-none d-sm-flex align-items-center justify-content-center logo d-flex  header_link order-2 order-lg-1">
                 <h1>
-                    <a href="#">it_hlp</a>
+                    <a href="{% url 'main_page_view' %}">it_hlp</a>
                 </h1>
             </div>
 
@@ -50,31 +50,10 @@
         </div> <!--  -->
     </div> <!--  -->
 </header>
-<!-- modal window for search -->
-<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="searchModalLabel">Поиск</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <nav class="navbar bg-body-tertiary">
-                    <div class="container-fluid">
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search"
-                                   aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                    </div>
-                </nav>
-            </div>
 
-        </div>
-    </div>
-</div>
+
+<!-- modal window for search -->
+{% include "UI/include/search_modal.html" %}
 <!-- /modal window for search -->
 
 <!-- modal window for login -->

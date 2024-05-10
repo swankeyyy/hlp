@@ -1,0 +1,28 @@
+
+<!-- modal window for search -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="searchModalLabel">Поиск</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <nav class="navbar bg-body-tertiary">
+                    <div class="container-fluid">
+                        <form class="d-flex" action="{% url 'main_page_view' %}" method="get" role="search">
+                            {% csrf_token %}
+                            <input class="form-control me-2" type="search" placeholder="Поиск статьи"
+                                   aria-label="Search" name="q">
+                            <button class="btn btn-outline-success" type="submit">Поиск</button>
+                        </form>
+                    </div>  
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- /modal window for search -->
