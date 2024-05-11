@@ -1,4 +1,5 @@
 {% load blog_tags %}
+{% load static %}
 
 
 <header class="header  mb-4 sticky-top " id="header-nav">
@@ -40,11 +41,33 @@
                         data-bs-target="#searchModal" title="Поиск">
                     <i class="fa-solid fa-magnifying-glass fa-rotate-90 fa-xl  "></i>
                 </button>
-                <button type="button" class="btn header_search" data-bs-toggle="modal"
-                        data-bs-target="#loginModal" title="Авторизация">
-                    <i class="fa-solid fa-key fa-xl"></i>
-                </button>
 
+                {% if user.is_authenticated %}
+                    <button type="button" class="btn header_search" title="Закладки">
+                        <i class="fa-regular fa-bookmark fa-xl"></i>
+                    </button>
+
+                    <button type="button" class="btn header_login" data-bs-toggle="modal"
+                            data-bs-target="#loginsetModal" title="Admin">
+                        {#                        <div class=""><img src="assets/img/no-name.jpg" alt=""></div>#}
+                        <div class="">
+                            {% if user.image %}
+                                <img
+                                        src="{{ user.image.url }}"
+                                        alt="">
+                            {% else %}
+                                <img src="{% static 'img/no-name.jpg' %}" alt="">
+                            {% endif %}
+                        </div>
+
+                    </button>
+
+                {% else %}
+                    <button type="button" class="btn header_search" data-bs-toggle="modal"
+                            data-bs-target="#loginModal" title="Авторизация">
+                        <i class="fa-solid fa-key fa-xl"></i>
+                    </button>
+                {% endif %}
 
             </div> <!--  -->
         </div> <!--  -->
@@ -55,6 +78,7 @@
 <!-- modal window for search -->
 {% include "UI/include/search_modal.html" %}
 <!-- /modal window for search -->
+
 
 <!-- modal window for login -->
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
@@ -69,25 +93,32 @@
             <div class="modal-body">
                 <nav class="navbar bg-body-tertiary">
                     <div class="container-fluid">
-                        <form>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                       aria-describedby="emailHelp">
-                                <div id="emailHelp" class="form-text">We'll never share your email with anyone
-                                    else.
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
-                            </div>
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
+
+
+
+                            {#                        <form>#}
+
+                                                        {% include "users/login.html" %}
+                            {#                            <div class="mb-3">#}
+                            {#                                <label for="exampleInputEmail1" class="form-label">Email address</label>#}
+                            {#                                <input type="email" class="form-control" id="exampleInputEmail1"#}
+                            {#                                       aria-describedby="emailHelp">#}
+                            {#                                <div id="emailHelp" class="form-text">We'll never share your email with anyone#}
+                            {#                                    else.#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {#                            <div class="mb-3">#}
+                            {#                                <label for="exampleInputPassword1" class="form-label">Password</label>#}
+                            {#                                <input type="password" class="form-control" id="exampleInputPassword1">#}
+                            {#                            </div>#}
+                            {#                            <div class="mb-3 form-check">#}
+                            {#                                <input type="checkbox" class="form-check-input" id="exampleCheck1">#}
+                            {#                                <label class="form-check-label" for="exampleCheck1">Check me out</label>#}
+                            {#                            </div>#}
+                            {#                            <button type="submit" class="btn btn-primary">Submit</button>#}
+
+                            {#                        </form>#}
+
                     </div>
                 </nav>
             </div>
@@ -96,3 +127,26 @@
     </div>
 </div>
 <!-- /modal window for login -->
+
+<!-- modal window for login.settings -->
+<div class="modal fade" id="loginsetModal" tabindex="-1" aria-labelledby="loginsetModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="loginsetModalLabel">Настройки</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <nav class="navbar bg-body-tertiary">
+                    <div class="container-fluid">
+                        <p><a href="{% url 'logout' %}">Выйти</a></p>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- /modal window for login.settings  -->
+

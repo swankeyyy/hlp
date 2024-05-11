@@ -1,0 +1,26 @@
+{% load static %}
+
+
+<form method="post">
+    {% csrf_token %}
+    {# <input type="hidden" name="next", value="{{ next }}" />#}
+    {# перенапровлени#}
+    {#    {{ form.non_field_errors }}#}
+    {#        общие ошибки      #}
+    {#    {% for f in form %}#}
+    {#        <div class="mb-3">#}
+    {#            <label for="{{ f.id_for_label }}" class="form-label">{{ f.label }}</label>#}
+    {#            {{ f }}#}
+    {#            <div class="invalid-feedback">#}
+    {#                {{ f.errors }}#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    {% endfor %}#}
+
+
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary btn-block">Войти</button>
+    <p><a href="{%  url 'register' %}">регистрация</a></p>
+
+</form>
