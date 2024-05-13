@@ -1,4 +1,5 @@
 {% load blog_tags %}
+{% load users_tags %}
 {% load static %}
 
 
@@ -81,7 +82,7 @@
 
 
 <!-- modal window for login -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
+{% comment %} <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -94,11 +95,11 @@
                 <nav class="navbar bg-body-tertiary">
                     <div class="container-fluid">
 
-
+                        {% include "users/login.html" %}
 
                             {#                        <form>#}
 
-                                                        {% include "users/login.html" %}
+                                                        
                             {#                            <div class="mb-3">#}
                             {#                                <label for="exampleInputEmail1" class="form-label">Email address</label>#}
                             {#                                <input type="email" class="form-control" id="exampleInputEmail1"#}
@@ -125,9 +126,9 @@
 
         </div>
     </div>
-</div>
+</div> {% endcomment %}
 <!-- /modal window for login -->
-
+{% get_login_modal %}
 <!-- modal window for login.settings -->
 <div class="modal fade" id="loginsetModal" tabindex="-1" aria-labelledby="loginsetModalLabel"
      aria-hidden="true">

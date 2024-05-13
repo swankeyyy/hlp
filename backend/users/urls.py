@@ -8,7 +8,7 @@ from django.urls import reverse, reverse_lazy
 
 urlpatterns = [
     path('register/', RegisterUser.as_view(), name='register'),  # регистрация
-    path('login/', LoginUser.as_view(), name='login'),  # авторизация
+    path('login/', login_user, name='login'),  # authorization
     path('logout/', logout_user, name='logout'),  # выход
-
+    
 ]

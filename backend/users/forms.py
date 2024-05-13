@@ -37,10 +37,12 @@ class LoginUserForm(AuthenticationForm):
     """
     авторизация
     """
-    username = forms.CharField(label="Логин/Email",
-                               widget=forms.TextInput(attrs={'class': 'form-input'}))
-    password = forms.CharField(label="Пароль",
-                               widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+    username = forms.CharField(
+                               widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'login', 
+                                                             'placeholder': 'Введите ваш username или email'}))
+    password = forms.CharField(
+                               widget=forms.PasswordInput(attrs={'class': 'form-control', 'id': 'password', 
+                                                             'placeholder': 'Введите ваш пароль'}))
 
     class Meta:
         """
