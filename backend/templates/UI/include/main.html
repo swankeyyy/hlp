@@ -7,7 +7,12 @@
                 {% block content %}
                 {% endblock content %}
 
-                {% include 'UI/include/sidebar.html' %}
+                {% if not reg %}
+
+                    {% include 'UI/include/sidebar.html' %}
+
+                {% endif %}
+
             </div>
         </div>
 

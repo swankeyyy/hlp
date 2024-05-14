@@ -44,6 +44,10 @@ img {
     height: auto;
 }
 
+
+a{
+    text-decoration: none;
+}
 /*  ----------------- /основные -------------------  */
 
 /*  ----------------- header -------------------  */
@@ -74,7 +78,7 @@ img {
 !important;
 }
 
-.header_login div{
+.header_login div {
     width: 35px;
     height: 35px;
 }
@@ -188,4 +192,52 @@ img {
 }
 
 /*  ----------------- /footer -------------------  */
+
+
+/*  ----------------- user -------------------  */
+
+
+.form-control {
+    background-color: #fff;
+!important;
+    border-radius: 0;
+}
+
+.form-control:focus {
+
+    border: 1px solid #dee2e6;
+
+    -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.61);
+    -moz-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.61);
+    box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.61);
+}
+
+.btn_reg{
+    border-color: black;
+    display: block;
+    width: 100%;
+    border-radius: 0;
+}
+
+.btn_reg:hover{
+    border-color: black;
+
+        -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.61);
+    -moz-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.61);
+    box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.61);
+}
+
+.login_a a{
+    font-weight: 300;
+    font-size: 14px;
+
+}
+
+.qwerty{
+    width: 80%;
+
+    border-color: red;
+}
+
+/*  ----------------- /user -------------------  */
 

@@ -15,6 +15,7 @@ class AllPostsView(CommonTitleMixin, ListView):
     template_name = "blog/all_posts.html"
     context_object_name = "posts"
     error_search_message = None
+    paginate_by = 3
 
     def _get_content_by_search(self, instance, search):
         """takes search value and instance and check:

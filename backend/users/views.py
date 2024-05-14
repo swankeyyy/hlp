@@ -23,6 +23,11 @@ class RegisterUser(SuccessMessageMixin, CreateView):
     success_url = reverse_lazy("main_page_view")
     success_message = "Вы успешно зарегистрировались! "
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['reg'] = 'reg'
+        return context
+
 
 # class LoginUser(SuccessMessageMixin, LoginView):
 #     """
