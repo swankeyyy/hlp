@@ -1,8 +1,8 @@
 from typing import Any
-from django.db.models import Q
+
 from django.db.models.query import QuerySet
-from django.shortcuts import render
-from django.views import View
+
+
 from django.views.generic.list import ListView
 from .models import Post
 from common.views import CommonTitleMixin
@@ -45,3 +45,6 @@ class AllPostsView(CommonTitleMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['error_search_message'] = self.error_search_message
         return context
+
+
+
