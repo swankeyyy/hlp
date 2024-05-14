@@ -34,9 +34,11 @@
                                 <div class="card_title">
                                     <h2>{{ post.name }}</h2>
                                 </div>
-                                <div class="my-2">
-                                    <img src="{% static 'img/it.png' %}" alt=""/>
-                                </div>
+                                {% if post.preview_image %}
+                                    <div class="my-2 img_post_pr">
+                                        <img src="{{ post.preview_image.url }}" alt="{{ post.name }}"/>
+                                    </div>
+                                {% endif %}
                                 <div class="card_description">
                                     <p>{{ post.description|truncatechars:600 }}</p>
                                 </div>
@@ -78,7 +80,7 @@
                 </div>
 
 
-
+                {# подключаем пагинацию #}
                 {% include 'UI/include/paginate.html' %}
 
             </div>
