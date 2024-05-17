@@ -35,7 +35,7 @@ class RegisterUserForm(UserCreationForm):
 
 class LoginUserForm(AuthenticationForm):
     """
-    авторизация
+    authorization
     """
     username = forms.CharField(
                                widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'login', 
