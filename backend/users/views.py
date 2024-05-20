@@ -3,7 +3,7 @@ from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
 from django.http import HttpResponseRedirect
-from django.urls import reverse,reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import *
@@ -11,12 +11,19 @@ from .models import User
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 
+"""
+context['reg'] = 'reg' // We overturn the reg wherever you need to remove the site bar (main.html)
+{% if not reg %}
+    {% include 'UI/include/sidebar.html' %}
+{% endif %}
+
+"""
+
 
 class RegisterUser(SuccessMessageMixin, CreateView):
     """
-    регистрация
+    Registration
     """
-
     form_class = RegisterUserForm
     template_name = "users/register.html"
     extra_context = {"title": "Регистрация"}
@@ -27,21 +34,6 @@ class RegisterUser(SuccessMessageMixin, CreateView):
         context = super().get_context_data(**kwargs)
         context['reg'] = 'reg'
         return context
-
-
-# class LoginUser(SuccessMessageMixin, LoginView):
-#     """
-#     авторизация
-#     """
-#     form_class = LoginUserForm
-#     # template_name = 'users/login.html'
-#     template_name = 'base.html'
-#     extra_context = {'title': 'Авторизация'}
-#     success_message = "Вы успешно авторизованы! "
-
-#     def get_success_url(self):
-#         # перенапровление
-#         return reverse_lazy('main_page_view')
 
 
 def login_user(request):
@@ -56,7 +48,6 @@ def login_user(request):
         user = User.objects.filter(Q(username=log) | Q(email=login)).first()
         if user:
             user = authenticate(username=user.username, password=password)
-
             if user:
                 login(request, user)
                 messages.success(request, "Вы успешно авторизованы")
@@ -65,14 +56,12 @@ def login_user(request):
 
 class ProfileUser(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     """
-    Профиль пользователя
+    Profile user
     """
     model = User
     form_class = ProfileUserForm
     template_name = 'users/profile.html'
     success_message = "Профиль изменен "
-
-
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -82,18 +71,22 @@ class ProfileUser(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         """
-        перенапровление
+        redirect to profile
         """
         return reverse_lazy('profile')
 
     def get_object(self, queryset=None):
         """
-        в профиле берет залогининого пользователя
+        in the profile takes the logged in user
         """
         return self.request.user
 
 
 def logout_user(request):
+    """
+    if you logged out of your account and were on the user’s page,
+    it redirects to the main page
+    """
     logout(request)
     try:
         return HttpResponseRedirect(reverse('main_page_view'))
