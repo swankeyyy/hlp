@@ -48,10 +48,10 @@
                         <i class="fa-regular fa-bookmark fa-xl"></i>
                     </button>
 
-                    <button type="button" class="btn header_login" data-bs-toggle="modal"
-                            data-bs-target="#loginsetModal" title="Admin">
+                    <button type="button" class="btn header_login" data-bs-toggle="offcanvas"
+                            data-bs-target="#loginsetoffcanvas" aria-controls="loginsetoffcanvas" title="Admin">
                         {#                        <div class=""><img src="assets/img/no-name.jpg" alt=""></div>#}
-                        <div class="">
+                        <div class="user_img_header rounded-5">
                             {% if user.image %}
                                 <img
                                         src="{{ user.image.url }}"
@@ -82,24 +82,25 @@
 
 
 <!-- modal window for login -->
-{% comment %} <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="loginModalLabel">Авторизация</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <nav class="navbar bg-body-tertiary">
-                    <div class="container-fluid">
+{% comment %}
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="loginModalLabel">Авторизация</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <nav class="navbar bg-body-tertiary">
+                        <div class="container-fluid">
 
-                        {% include "users/login.html" %}
+                            {% include "users/login.html" %}
 
                             {#                        <form>#}
 
-                                                        
+
                             {#                            <div class="mb-3">#}
                             {#                                <label for="exampleInputEmail1" class="form-label">Email address</label>#}
                             {#                                <input type="email" class="form-control" id="exampleInputEmail1"#}
@@ -120,34 +121,45 @@
 
                             {#                        </form>#}
 
-                    </div>
-                </nav>
-            </div>
+                        </div>
+                    </nav>
+                </div>
 
+            </div>
         </div>
-    </div>
-</div> {% endcomment %}
+    </div> {% endcomment %}
 <!-- /modal window for login -->
 {% get_login_modal %}
 <!-- modal window for login.settings -->
-<div class="modal fade" id="loginsetModal" tabindex="-1" aria-labelledby="loginsetModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="loginsetModalLabel">Настройки</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <nav class="navbar bg-body-tertiary">
-                    <div class="container-fluid">
-                        <p><a href="{% url 'logout' %}">Выйти</a></p>
-                </nav>
-            </div>
+<div class="offcanvas offcanvas-end" id="loginsetoffcanvas" tabindex="-1" aria-labelledby="loginsetoffcanvasLabel">
 
+
+    <div class="offcanvas-header">
+
+        <div class="user_img_header me-2">
+            {% if user.image %}
+                <img
+                        src="{{ user.image.url }}"
+                        alt="">
+            {% else %}
+                <img src="{% static 'img/no-name.jpg' %}" alt="">
+            {% endif %}
         </div>
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">{{ user }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
+    <div class="offcanvas-body">
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid d-flex flex-column">
+                <div class=""><p>Предложить новость </p></div>
+                <div class=""><p>Че ниб еще</p></div>
+                <div class=""><p><a href="{% url 'profile' %}">Настройки</a></p></div>
+
+                <div class=""><p><a href="{% url 'logout' %}">Выйти</a></p></div>
+        </nav>
+    </div>
+
+
 </div>
 <!-- /modal window for login.settings  -->
 

@@ -3,7 +3,7 @@ from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
 from django.http import HttpResponseRedirect
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse,reverse_lazy
 from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import *
@@ -63,6 +63,39 @@ def login_user(request):
         return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
 
 
+class ProfileUser(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
+    """
+    Профиль пользователя
+    """
+    model = User
+    form_class = ProfileUserForm
+    template_name = 'users/profile.html'
+    success_message = "Профиль изменен "
+
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['reg'] = 'reg'
+        context['title'] = 'Профиль пользователя'
+        return context
+
+    def get_success_url(self):
+        """
+        перенапровление
+        """
+        return reverse_lazy('profile')
+
+    def get_object(self, queryset=None):
+        """
+        в профиле берет залогининого пользователя
+        """
+        return self.request.user
+
+
 def logout_user(request):
     logout(request)
-    return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
+    try:
+        return HttpResponseRedirect(reverse('main_page_view'))
+    except:
+        return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
