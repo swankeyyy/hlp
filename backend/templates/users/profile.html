@@ -8,12 +8,12 @@
     <div class="col-md-12 ">
         <div class="reg_body">
             {% if user.is_authenticated %}
-                <p>Для регистрации нужно выйти из аккаунта</p>
-            {% else %}
 
-                <div class=""><h4>Регистрация:</h4> </div>
+
+
+                <div class=""><h4>{{ title }}</h4></div>
                 <hr>
-                <form method="post" >
+                <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
 
 
@@ -32,13 +32,22 @@
                             </div>
                         </div>
                     {% endfor %}
+                    <div class="user_img_header ">
+                        {% if user.image %}
+                            <img
+                                    src="{{ user.image.url }}"
+                                    alt="">
+                        {% else %}
+                            <img src="{% static 'img/no-name.jpg' %}" alt="">
+                        {% endif %}
+                    </div>
                     <div class="d-flex">
                         <input id="html" type="checkbox" class="me-2" required>
-                        <label for="html">Я принимаю условия <a href="#">Пользовательского соглашения</a></label>
+                        <label for="html">капча</label>
                     </div>
 
-
-                    <button type="submit" class="btn btn_reg my-3">Зарегистрироваться</button>
+                    <a href="#">Изменить пароль</a>
+                    <button type="submit" class="btn btn_reg my-3">Сохранить</button>
 
                 </form>
             {% endif %}
