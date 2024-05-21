@@ -14,5 +14,5 @@ def get_header_menu(context):
 @register.inclusion_tag("UI/tags/main/sidebar_posts.html")
 def get_sidebar_posts(num):
     """7 most popular posts for sidebar"""
-    posts = Post.objects.filter(is_published=True).order_by("views")[0:int(num)]
+    posts = Post.objects.filter(is_published=True).order_by("-id")[0:int(num)]
     return {"posts": posts}

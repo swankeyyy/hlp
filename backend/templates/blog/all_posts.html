@@ -25,14 +25,14 @@
                 </div>
                 <div class="d-flex mb-2">
                   <div class="me-2">{{ post.language.icon|safe }}</div>
-                  {% for tag in post.tag.all %}
+                  {% for cat in post.category.get_family %}
                     <div class="me-2">
-                      <span class="badge text-bg-secondary">{{ tag.name }}</span>
+                      <span class="badge text-bg-secondary">{{ cat.name }}</span>
                     </div>
                   {% endfor %}
                 </div>
                 <div class="card_title">
-                  <h2>{{ post.name }}</h2>
+                    <h2><a href="{% url "post_detail_view" post.url %}">{{ post.name }}</a></h2>
                 </div>
                 <div class="my-2">
                   <img src="{% static 'img/it.png' %}" alt="" />
@@ -68,7 +68,7 @@
                     </div>
                   </div>
                   <div class="card_link">
-                    <a href="#">Подробнее</a>
+                    <a href="{% url "post_detail_view" post.url %}">Подробнее...</a>
                   </div>
                 </div>
               </div>
