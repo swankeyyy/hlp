@@ -128,7 +128,7 @@ class Post(models.Model):
         return f"{self.name} - {self.category}"
 
     class Meta:
-        ordering = ["time_created"]
+        ordering = ["-time_created"]
         verbose_name = "Пост"
         verbose_name_plural = "Посты"
 
