@@ -119,7 +119,7 @@ class Post(models.Model):
     )
     is_published = models.BooleanField(default=True)
     time_created = models.DateField(auto_now_add=True)
-    views = models.ManyToManyField(to=Ip, related_name="post_views", blank=True, verbose_name="Просмотры")
+    views = models.IntegerField(default=0, verbose_name='Кол-во просмотров')
     
     def total_views(self):
         return self.views.count()

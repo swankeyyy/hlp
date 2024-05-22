@@ -2,83 +2,85 @@
 {% load static %}
 
 {% block content %}
-  <div class="col">
-    <div class="container-fluid h-100">
-      <div class="row body_row">
-        <div class="col-12 body">
-          {% if error_search_message %}
-            <h1>{{ error_search_message }}</h1>
-          {% endif %}
-          {% for post in posts %}
-            <div class="body_item">
-              <div class="my-1 card_">
-                <div class="d-flex d-flex align-items-end card_item mb-1">
-                  <div class="card_img me-2">
-                    <img src="{% static 'img/no-name.jpg' %}" alt="" />
-                  </div>
-                  {% if post.author %}
-                    <div class="card_login me-2">{{ post.author.username }}</div>
-                  {% else %}
-                    <div class="card_login me-2">admin</div>
-                  {% endif %}
-                  <div class="card_time">14 минут назад</div>
+    <div class="col">
+        <div class="container-fluid h-100">
+            <div class="row body_row">
+                <div class="col-12 body">
+                    {% if error_search_message %}
+                        <h1>{{ error_search_message }}</h1>
+                    {% endif %}
+                    {% for post in posts %}
+                        <div class="body_item">
+                            <div class="my-1 card_">
+                                <div class="d-flex d-flex align-items-end card_item mb-1">
+                                    <div class="card_img me-2">
+                                        <img src="{% static 'img/no-name.jpg' %}" alt=""/>
+                                    </div>
+                                    {% if post.author %}
+                                        <div class="card_login me-2">{{ post.author.username }}</div>
+                                    {% else %}
+                                        <div class="card_login me-2">admin</div>
+                                    {% endif %}
+                                    <div class="card_time">14 минут назад</div>
+                                </div>
+                                <div class="d-flex mb-2">
+                                    <div class="me-2">{{ post.language.icon|safe }}</div>
+                                    {% for cat in post.category.get_family %}
+                                        <div class="me-2">
+                                            <span class="badge text-bg-secondary">{{ cat.name }}</span>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="card_title">
+                                    <h2><a href="{% url "post_detail_view" post.url %}">{{ post.name }}</a></h2>
+                                </div>
+                                {% if post.preview_image %}
+                                    <div class="my-2 img_post_pr">
+                                        <img src="{{ post.preview_image.url }}" alt="{{ post.name }}"/>
+                                    </div>
+                                {% endif %}
+                                <div class="card_description">
+                                    <p>{{ post.description|truncatechars:600 }}</p>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex">
+                                        <div class="d-flex me-2" title="Количество просмотров">
+                                            <div class="">
+                                                <i class="fa-regular fa-eye"></i>
+                                            </div>
+                                            <div class="">
+                                                <p>{{ post.views }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex me-2" title="Комментарии">
+                                            <div class="">
+                                                <i class="fa-regular fa-comment"></i>
+                                            </div>
+                                            <div class="">{{ post.comment.count }}</div>
+                                        </div>
+                                        <div class="d-flex me-2" title="Поделиться">
+                                            <div class="card_link">
+                                                <a href="{{ post.url }}"><i class="fa-solid fa-share"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex me-2" title="Добавить в закладки">
+                                            <div class="">
+                                                <i class="fa-regular fa-bookmark"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card_link">
+                                        <a href="{% url "post_detail_view" post.url %}">Подробнее...</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+                        </div>
+                    {% endfor %}
                 </div>
-                <div class="d-flex mb-2">
-                  <div class="me-2">{{ post.language.icon|safe }}</div>
-                  {% for cat in post.category.get_family %}
-                    <div class="me-2">
-                      <span class="badge text-bg-secondary">{{ cat.name }}</span>
-                    </div>
-                  {% endfor %}
-                </div>
-                <div class="card_title">
-                    <h2><a href="{% url "post_detail_view" post.url %}">{{ post.name }}</a></h2>
-                </div>
-                <div class="my-2">
-                  <img src="{% static 'img/it.png' %}" alt="" />
-                </div>
-                <div class="card_description">
-                  <p>{{ post.description|truncatechars:600 }}</p>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <div class="d-flex">
-                    <div class="d-flex me-2" title="Количество просмотров">
-                      <div class="">
-                        <i class="fa-regular fa-eye"></i>
-                      </div>
-                      <div class="">
-                        <p>{{ post.total_views }}</p>
-                      </div>
-                    </div>
-                    <div class="d-flex me-2" title="Комментарии">
-                      <div class="">
-                        <i class="fa-regular fa-comment"></i>
-                      </div>
-                      <div class="">{{ post.comment.count }}</div>
-                    </div>
-                    <div class="d-flex me-2" title="Поделиться">
-                      <div class="card_link">
-                        <a href="{{ post.url }}"><i class="fa-solid fa-share"></i></a>
-                      </div>
-                    </div>
-                    <div class="d-flex me-2" title="Добавить в закладки">
-                      <div class="">
-                        <i class="fa-regular fa-bookmark"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card_link">
-                    <a href="{% url "post_detail_view" post.url %}">Подробнее...</a>
-                  </div>
-                </div>
-              </div>
-              <hr />
+                {% include 'UI/include/paginate.html' %}
             </div>
-          {% endfor %}
         </div>
-                        {% include 'UI/include/paginate.html' %}
-        </div>
-      </div>
     </div>
 
 {% endblock %}
