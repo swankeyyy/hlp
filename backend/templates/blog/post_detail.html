@@ -9,20 +9,25 @@
                 <div class="col-12 body">
                     <div class="body_item">
                         <div class=" my-1 card_ ">
-                            <div class="card_title "><h1>{{ post.name }}</h1>
-                            </div>
-                            <div class="d-flex d-flex align-items-end card_item mb-1">
-                                <div class="card_img me-2">
-                                    <img src="" alt="">
+
+                            <div class="d-flex d-flex align-items-center card_item mb-1">
+                                <div class="user_img_header rounded-5 me-2">
+                                    {% if post.author.image %}
+                                        <img src="{{ post.author.image.url }}" alt="">
+                                    {% else %}
+                                        <img src="{% static 'img/no-name.jpg' %}" alt="">
+                                    {% endif %}
                                 </div>
                                 {% if post.author %}
                                     <div class="card_login me-2">{{ post.author.username }}</div>
                                 {% else %}
                                     <div class="card_login me-2">User</div>
                                 {% endif %}
-                                <div class="card_time">14 минут назад</div>
+                                <div class="card_time">{{ post.time_created|timesince }} назад</div>
 
-
+                            </div>
+                            <div class="card_title ">
+                                <h1>{{ post.name }}</h1>
                             </div>
                             <div class="d-flex mb-2">
                                 <div class="me-2">{{ post.language.icon|safe }}
@@ -44,27 +49,89 @@
                                 {{ post.description }}
 
                             </div>
+                            <div class="my-2">Теги:
+                                {% for t in post.tag.all %}
+
+                                    <span class=" "><a href="#">{{ t.name }}</a></span>
+
+                                {% endfor %}
+
+
+                            </div>
+
                             <div class="d-flex justify-content-between">
                                 <div class="d-flex ">
-                                    <div class="d-flex me-2 " title="Количество просмотров">
-                                        <div class=""><i class="fa-regular fa-eye "></i></div>
+                                    <div class="d-flex me-4 card_time" title="Количество просмотров">
+                                        <div class="me-1"><i class="fa-regular fa-eye "></i></div>
                                         <div class=""><p>{{ post.views }}</p></div>
                                     </div>
-                                    <div class="d-flex me-2" title="Комментарии">
-                                        <div class=""><i class="fa-regular fa-comment"></i></div>
+                                    <div class="d-flex me-4 card_time" title="Комментарии">
+                                        <div class="me-1"><i class="fa-regular fa-comment"></i></div>
                                         <div class="">{{ post.comment.count }}</div>
                                     </div>
-                                    <div class="d-flex me-2" title="Поделиться">
-                                        <div class="card_link"><a href="#"><i class="fa-solid fa-share"></i></a>
+                                    <div class="d-flex me-4 " title="Поделиться">
+                                        <div class="card_link card_time"><a href="#"><i
+                                                class="card_time fa-solid fa-share"></i></a>
                                         </div>
                                     </div>
-                                    <div class="d-flex me-2" title="Добавить в закладки">
+                                    <div class="d-flex me-4 card_time" title="Добавить в закладки">
                                         <div class=""><i class="fa-regular fa-bookmark"></i></div>
 
                                     </div>
                                 </div>
 
                             </div>
+                            <hr>
+                            <div class="">Комментарии: 4</div>
+                            <div class="comment_all my-3">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <div class="comment_item ">
+                                                <div class="d-flex d-flex align-items-center comment_header p-1">
+                                                    <div class="user_img_comment rounded-2 me-2">
+                                                        {% if post.author.image %}
+                                                            <img src="{{ post.author.image.url }}" alt="">
+                                                        {% else %}
+                                                            <img src="{% static 'img/no-name.jpg' %}" alt="">
+                                                        {% endif %}
+                                                    </div>
+                                                    {% if post.author %}
+                                                        <div class="card_login me-2">{{ post.author.username }}</div>
+                                                    {% else %}
+                                                        <div class="card_login me-2">User</div>
+                                                    {% endif %}
+                                                    <div class="card_time">{{ post.time_created|timesince }} назад</div>
+
+                                                </div>
+                                                <div class="p-1">
+                                                    <div class=""> может не работать завтра. Поэтому программы должны
+                                                        быть гибкими и
+                                                        легко
+                                                        изменяемыми
+                                                        (вот почему они называются софтом). Я не говорю, что нужно
+                                                        отказаться от
+                                                        стремления
+                                                        к совершенству. Просто нужно помнить о написании слишком
+                                                        сложного и
+                                                        связного
+                                                        кода.
+                                                        Быть профессионалом не то же самое, что и быть перфекционистом.
+                                                        Это
+                                                        скорее когда
+                                                        ты
+                                                        оптимально хорош большую
+                                                    </div>
+
+                                                    <div class="mt-1 text-end">удалить | еще чтото</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
 
                         </div>
 

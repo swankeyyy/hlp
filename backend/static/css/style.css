@@ -84,15 +84,15 @@ a {
     height: 35px;
 }
 
-.user_img_header{
+.user_img_header {
     width: 38px;
     height: 38px;
     /*border-radius: 50%;*/
     overflow: hidden;
 }
 
-.user_img_canvas{
-        width: 38px;
+.user_img_canvas {
+    width: 38px;
     height: 38px;
 
     overflow: hidden;
@@ -117,8 +117,8 @@ a {
     font-weight: bold;
 }
 
-.card_title h2 {
-    font-size: 18px;
+.card_title h1 {
+    font-size: 26px;
 }
 
 .card_description {
@@ -178,6 +178,32 @@ a {
     height: auto;
     object-fit: cover;
 }
+
+
+/*comment*/
+
+.user_img_comment {
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+}
+
+.comment_item {
+    /*background-color: #E3E3E3FF;*/
+    -webkit-box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.75);
+
+}
+
+.comment_header {
+
+    background-color: #e1e1e1;
+
+}
+
+/*/comment*/
+/**/
 
 /*  ----------------- /body -------------------  */
 
