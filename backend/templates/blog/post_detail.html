@@ -26,7 +26,7 @@
                                 <div class="card_time">{{ post.time_created|timesince }} назад</div>
 
                             </div>
-                            <div class="card_title ">
+                            <div class="card_title_detail ">
                                 <h1>{{ post.name }}</h1>
                             </div>
                             <div class="d-flex mb-2">
@@ -87,7 +87,7 @@
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-10">
-                                            <div class="comment_item ">
+                                            <div class="comment_item mb-2">
                                                 <div class="d-flex d-flex align-items-center comment_header p-1">
                                                     <div class="user_img_comment rounded-2 me-2">
                                                         {% if post.author.image %}
@@ -126,6 +126,139 @@
                                                     <div class="mt-1 text-end">удалить | еще чтото</div>
                                                 </div>
                                             </div>
+                                            <div class="comment_item mb-2">
+                                                <div class="d-flex d-flex align-items-center comment_header p-1">
+                                                    <div class="user_img_comment rounded-2 me-2">
+                                                        {% if post.author.image %}
+                                                            <img src="{{ post.author.image.url }}" alt="">
+                                                        {% else %}
+                                                            <img src="{% static 'img/no-name.jpg' %}" alt="">
+                                                        {% endif %}
+                                                    </div>
+                                                    {% if post.author %}
+                                                        <div class="card_login me-2">{{ post.author.username }}</div>
+                                                    {% else %}
+                                                        <div class="card_login me-2">User</div>
+                                                    {% endif %}
+                                                    <div class="card_time">{{ post.time_created|timesince }} назад</div>
+
+                                                </div>
+                                                <div class="p-1">
+                                                    <div class=""> может не работать завтра. Поэтому программы должны
+                                                        быть гибкими и
+                                                        легко
+                                                        изменяемыми
+                                                        (вот почему они называются софтом). Я не говорю, что нужно
+                                                        отказаться от
+                                                        стремления
+
+
+                                                    </div>
+
+                                                    <div class="mt-1 text-end">удалить | еще чтото</div>
+                                                </div>
+                                            </div>
+                                            <div class="comment_item mb-2">
+                                                <div class="d-flex d-flex align-items-center comment_header p-1">
+                                                    <div class="user_img_comment rounded-2 me-2">
+                                                        {% if post.author.image %}
+                                                            <img src="{{ post.author.image.url }}" alt="">
+                                                        {% else %}
+                                                            <img src="{% static 'img/no-name.jpg' %}" alt="">
+                                                        {% endif %}
+                                                    </div>
+                                                    {% if post.author %}
+                                                        <div class="card_login me-2">{{ post.author.username }}</div>
+                                                    {% else %}
+                                                        <div class="card_login me-2">User</div>
+                                                    {% endif %}
+                                                    <div class="card_time">{{ post.time_created|timesince }} назад</div>
+
+                                                </div>
+                                                <div class="p-1">
+                                                    <div class=""> может не работать завтра. Поэтому программы должны
+                                                        быть гибкими и
+                                                        легко
+                                                        изменяемыми
+                                                        (вот почему они называются софтом). Я не говорю, что нужно
+                                                        отказаться от
+                                                        стремления
+
+
+                                                    </div>
+
+                                                    <div class="mt-1 text-end">удалить | еще чтото</div>
+                                                </div>
+                                            </div>
+                                            <div class="comment_item mb-2">
+                                                <div class="d-flex d-flex align-items-center comment_header p-1">
+                                                    <div class="user_img_comment rounded-2 me-2">
+                                                        {% if post.author.image %}
+                                                            <img src="{{ post.author.image.url }}" alt="">
+                                                        {% else %}
+                                                            <img src="{% static 'img/no-name.jpg' %}" alt="">
+                                                        {% endif %}
+                                                    </div>
+                                                    {% if post.author %}
+                                                        <div class="card_login me-2">{{ post.author.username }}</div>
+                                                    {% else %}
+                                                        <div class="card_login me-2">User</div>
+                                                    {% endif %}
+                                                    <div class="card_time">{{ post.time_created|timesince }} назад</div>
+
+                                                </div>
+                                                <div class="p-1">
+                                                    <div class=""> может не работать завтра. Поэтому программы должны
+                                                        быть гибкими и
+                                                        легко
+                                                        изменяемыми
+                                                        (вот почему они называются софтом). Я не говорю, что нужно
+                                                        отказаться от
+                                                        стремления
+
+
+                                                    </div>
+
+                                                    <div class="mt-1 text-end">удалить | еще чтото</div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <nav aria-label="Page navigation example">
+                                                    <ul class="pagination">
+                                                        <li class="page-item">
+                                                            <a class="page-link" href="#" aria-label="Previous">
+                                                                <span aria-hidden="true">&laquo;</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                        <li class="page-item">
+                                                            <a class="page-link" href="#" aria-label="Next">
+                                                                <span aria-hidden="true">&raquo;</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+
+                                            </div>
+                                            <div class="">
+                                                <form action="">
+                                                    <div class="form-floating">
+
+                                                    <textarea class="form-control" placeholder="Leave a comment here"
+                                                              id="floatingTextarea2" style="height: 100px"></textarea>
+                                                        <label for="floatingTextarea2">Ваш комментарий</label>
+                                                        <div class="text-end">
+                                                            <button type="submit" class="btn  ">Отправить
+                                                            </button>
+
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
