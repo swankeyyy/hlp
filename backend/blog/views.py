@@ -3,7 +3,7 @@ from django.db.models import F
 from django.db.models.query import QuerySet
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
-from .models import Post
+from .models import Post, Category
 from common.views import CommonTitleMixin
 from comment.forms import NewCommentForm
 
@@ -27,7 +27,7 @@ class AllPostsView(CommonTitleMixin, ListView):
             queryset_by_tag = instance.filter(tag__name=search)
             if queryset_by_tag:
                 return queryset_by_tag
-            queryset_by_icontains = instance.filter(name__icontains=search)
+            queryset_by_icontains = instance.filter(name__iregex=search)
             if queryset_by_icontains:
                 return queryset_by_icontains
             instance = []
@@ -48,7 +48,6 @@ class AllPostsView(CommonTitleMixin, ListView):
 
 
 class PostDetailView(CommonTitleMixin, DetailView):
-
     """Detail View of Single Post, with method for add comment to current post"""
 
     model = Post
@@ -68,13 +67,15 @@ class PostDetailView(CommonTitleMixin, DetailView):
         return context
 
 
+class CategoryView(CommonTitleMixin, ListView):
+    """List of posts by chosen category
+        find posts by them category slug
+    """
+    template_name = "blog/all_posts.html"
+    context_object_name = "posts"
+    paginate_by = 10
 
-
-
-
-
-
-
-
-
-
+    def get_queryset(self) -> QuerySet[Any]:
+        queryset = Post.objects.filter(category__url=self.kwargs['slug']).select_related("category")
+        self.title = queryset[0].category.name
+        return queryset

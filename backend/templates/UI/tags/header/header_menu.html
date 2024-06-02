@@ -13,13 +13,13 @@
         {% for menu_item in menu %}
             {% if menu_item.get_children %}
                 <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle text-underlined " href="#" role="button"
+                    <a class="nav-link dropdown-toggle text-underlined " href="{% url "category_view" menu_item.url %}" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         {{ menu_item.name }}
                     </a>
                     <ul class="dropdown-menu">
                         {% for children in menu_item.get_children %}
-                            <li><a class="dropdown-item" href="#">{{ children.name }}</a></li>
+                            <li><a class="dropdown-item" href="{% url "category_view" children.url %}">{{ children.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </li>

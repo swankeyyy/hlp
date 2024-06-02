@@ -87,6 +87,8 @@
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-10">
+
+
                                         {% for comment in comments %}
 
                                             <div class="comment_item mb-2">
@@ -109,12 +111,17 @@
                                                 <div class="p-1">
                                                     <div class="">{{ comment.content }}
                                                     </div>
-
-                                                    <div class="mt-1 text-end">удалить | еще чтото</div>
+                                                    {% if comment.user == user %}
+                                                    <div class="mt-1 text-end">
+                                                        <a href="{% url "delete_comment" comment.pk %}">удалить</a> | еще чтото</div>
+                                                    {% endif %}
                                                 </div>
                                             </div>
 
                                         {% endfor %}
+
+
+
 {#                                        pagination#}
                                             <div class="d-flex justify-content-center">
                                                 <nav aria-label="Page navigation example">
@@ -138,9 +145,9 @@
                                             </div>
 
 
-
+                                            {% if user.is_authenticated %}
                                             <div class="">
-                                                <form action="{% url 'create_comment' %}" method="post">
+                                                <form action="{% url "create_comment" %}" method="post">
                                                     {% csrf_token %}
 
                                                     <div class="form-floating">
@@ -159,6 +166,7 @@
                                                     </div>
                                                 </form>
                                             </div>
+                                        {% endif %}
 
                                         </div>
                                     </div>
