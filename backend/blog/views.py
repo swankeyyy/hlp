@@ -1,12 +1,11 @@
 from typing import Any
-
 from django.db.models import F
 from django.db.models.query import QuerySet
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
 from .models import Post
 from common.views import CommonTitleMixin
-
+from comment.forms import NewCommentForm
 
 
 class AllPostsView(CommonTitleMixin, ListView):
@@ -50,7 +49,7 @@ class AllPostsView(CommonTitleMixin, ListView):
 
 class PostDetailView(CommonTitleMixin, DetailView):
 
-    """Detail View of Single Post"""
+    """Detail View of Single Post, with method for add comment to current post"""
 
     model = Post
     slug_field = "url"
@@ -58,16 +57,19 @@ class PostDetailView(CommonTitleMixin, DetailView):
     context_object_name = "post"
     allow_empty = False
 
-
-
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         self.object.views = F('views') + 1
         self.object.save()
         self.object.refresh_from_db()
         context['title'] = self.get_object().name
+        context['comments'] = self.get_object().comment.order_by('-id')
+        context['comment_form'] = NewCommentForm
         return context
+
+
+
+
 
 
 

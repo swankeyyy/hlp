@@ -50,9 +50,9 @@
 
                             </div>
                             <div class="my-2">Теги:
-                                {% for t in post.tag.all %}
+                                {% for tag in post.tag.all %}
 
-                                    <span class=" "><a href="#">{{ t.name }}</a></span>
+                                    <span class=" "><a href="#">{{ tag.name }}</a></span>
 
                                 {% endfor %}
 
@@ -82,146 +82,40 @@
 
                             </div>
                             <hr>
-                            <div class="">Комментарии: 4</div>
+                            <div class="">Комментарии: {{ post.comment.count }}</div>
                             <div class="comment_all my-3">
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-10">
+                                        {% for comment in comments %}
+
                                             <div class="comment_item mb-2">
                                                 <div class="d-flex d-flex align-items-center comment_header p-1">
                                                     <div class="user_img_comment rounded-2 me-2">
-                                                        {% if post.author.image %}
-                                                            <img src="{{ post.author.image.url }}" alt="">
+                                                        {% if comment.user.image %}
+                                                            <img src="{{ comment.user.image.url }}" alt="">
                                                         {% else %}
                                                             <img src="{% static 'img/no-name.jpg' %}" alt="">
                                                         {% endif %}
                                                     </div>
                                                     {% if post.author %}
-                                                        <div class="card_login me-2">{{ post.author.username }}</div>
+                                                        <div class="card_login me-2">{{ comment.user.username }}</div>
                                                     {% else %}
                                                         <div class="card_login me-2">User</div>
                                                     {% endif %}
-                                                    <div class="card_time">{{ post.time_created|timesince }} назад</div>
+                                                    <div class="card_time">{{ comment.date|timesince }} назад...</div>
 
                                                 </div>
                                                 <div class="p-1">
-                                                    <div class=""> может не работать завтра. Поэтому программы должны
-                                                        быть гибкими и
-                                                        легко
-                                                        изменяемыми
-                                                        (вот почему они называются софтом). Я не говорю, что нужно
-                                                        отказаться от
-                                                        стремления
-                                                        к совершенству. Просто нужно помнить о написании слишком
-                                                        сложного и
-                                                        связного
-                                                        кода.
-                                                        Быть профессионалом не то же самое, что и быть перфекционистом.
-                                                        Это
-                                                        скорее когда
-                                                        ты
-                                                        оптимально хорош большую
+                                                    <div class="">{{ comment.content }}
                                                     </div>
 
                                                     <div class="mt-1 text-end">удалить | еще чтото</div>
                                                 </div>
                                             </div>
-                                            <div class="comment_item mb-2">
-                                                <div class="d-flex d-flex align-items-center comment_header p-1">
-                                                    <div class="user_img_comment rounded-2 me-2">
-                                                        {% if post.author.image %}
-                                                            <img src="{{ post.author.image.url }}" alt="">
-                                                        {% else %}
-                                                            <img src="{% static 'img/no-name.jpg' %}" alt="">
-                                                        {% endif %}
-                                                    </div>
-                                                    {% if post.author %}
-                                                        <div class="card_login me-2">{{ post.author.username }}</div>
-                                                    {% else %}
-                                                        <div class="card_login me-2">User</div>
-                                                    {% endif %}
-                                                    <div class="card_time">{{ post.time_created|timesince }} назад</div>
 
-                                                </div>
-                                                <div class="p-1">
-                                                    <div class=""> может не работать завтра. Поэтому программы должны
-                                                        быть гибкими и
-                                                        легко
-                                                        изменяемыми
-                                                        (вот почему они называются софтом). Я не говорю, что нужно
-                                                        отказаться от
-                                                        стремления
-
-
-                                                    </div>
-
-                                                    <div class="mt-1 text-end">удалить | еще чтото</div>
-                                                </div>
-                                            </div>
-                                            <div class="comment_item mb-2">
-                                                <div class="d-flex d-flex align-items-center comment_header p-1">
-                                                    <div class="user_img_comment rounded-2 me-2">
-                                                        {% if post.author.image %}
-                                                            <img src="{{ post.author.image.url }}" alt="">
-                                                        {% else %}
-                                                            <img src="{% static 'img/no-name.jpg' %}" alt="">
-                                                        {% endif %}
-                                                    </div>
-                                                    {% if post.author %}
-                                                        <div class="card_login me-2">{{ post.author.username }}</div>
-                                                    {% else %}
-                                                        <div class="card_login me-2">User</div>
-                                                    {% endif %}
-                                                    <div class="card_time">{{ post.time_created|timesince }} назад</div>
-
-                                                </div>
-                                                <div class="p-1">
-                                                    <div class=""> может не работать завтра. Поэтому программы должны
-                                                        быть гибкими и
-                                                        легко
-                                                        изменяемыми
-                                                        (вот почему они называются софтом). Я не говорю, что нужно
-                                                        отказаться от
-                                                        стремления
-
-
-                                                    </div>
-
-                                                    <div class="mt-1 text-end">удалить | еще чтото</div>
-                                                </div>
-                                            </div>
-                                            <div class="comment_item mb-2">
-                                                <div class="d-flex d-flex align-items-center comment_header p-1">
-                                                    <div class="user_img_comment rounded-2 me-2">
-                                                        {% if post.author.image %}
-                                                            <img src="{{ post.author.image.url }}" alt="">
-                                                        {% else %}
-                                                            <img src="{% static 'img/no-name.jpg' %}" alt="">
-                                                        {% endif %}
-                                                    </div>
-                                                    {% if post.author %}
-                                                        <div class="card_login me-2">{{ post.author.username }}</div>
-                                                    {% else %}
-                                                        <div class="card_login me-2">User</div>
-                                                    {% endif %}
-                                                    <div class="card_time">{{ post.time_created|timesince }} назад</div>
-
-                                                </div>
-                                                <div class="p-1">
-                                                    <div class=""> может не работать завтра. Поэтому программы должны
-                                                        быть гибкими и
-                                                        легко
-                                                        изменяемыми
-                                                        (вот почему они называются софтом). Я не говорю, что нужно
-                                                        отказаться от
-                                                        стремления
-
-
-                                                    </div>
-
-                                                    <div class="mt-1 text-end">удалить | еще чтото</div>
-                                                </div>
-                                            </div>
+                                        {% endfor %}
+{#                                        pagination#}
                                             <div class="d-flex justify-content-center">
                                                 <nav aria-label="Page navigation example">
                                                     <ul class="pagination">
@@ -242,15 +136,22 @@
                                                 </nav>
 
                                             </div>
-                                            <div class="">
-                                                <form action="">
-                                                    <div class="form-floating">
 
-                                                    <textarea class="form-control" placeholder="Leave a comment here"
-                                                              id="floatingTextarea2" style="height: 100px"></textarea>
+
+
+                                            <div class="">
+                                                <form action="{% url 'create_comment' %}" method="post">
+                                                    {% csrf_token %}
+
+                                                    <div class="form-floating">
+                                                            {{ comment_form.content }}
+
                                                         <label for="floatingTextarea2">Ваш комментарий</label>
+                                                        <input type="hidden" name="post_id" value="{{ post.id }}">
+                                                        <input type="hidden" name="user_id" value="{{ user.id }}">
                                                         <div class="text-end">
-                                                            <button type="submit" class="btn  ">Отправить
+
+                                                            <button type="submit" class="btn">Отправить
                                                             </button>
 
                                                         </div>
