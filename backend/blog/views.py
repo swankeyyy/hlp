@@ -74,8 +74,18 @@ class CategoryView(CommonTitleMixin, ListView):
     template_name = "blog/all_posts.html"
     context_object_name = "posts"
     paginate_by = 10
+    allow_empty = True
+    error_search_message = None
 
     def get_queryset(self) -> QuerySet[Any]:
         queryset = Post.objects.filter(category__url=self.kwargs['slug']).select_related("category")
-        self.title = queryset[0].category.name
+        if queryset:
+            self.title = queryset[0].category.name
+        else:
+            self.error_search_message = f"Категория пуста"
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['error_search_message'] = self.error_search_message
+        return context
