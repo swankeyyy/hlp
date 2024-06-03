@@ -1,5 +1,8 @@
-﻿/*
- Copyright (c) 2003-2015, CKSource - Frederico Knabben. All rights reserved.
- For licensing, see LICENSE.md or http://ckeditor.com/license
-*/
-CKEDITOR.plugins.setLang("widget","it",{move:"Fare clic e trascinare per spostare"});
+/**
+ * @license Copyright (c) 2003-2023, CKSource Holding sp. z o.o. All rights reserved.
+ * CKEditor 4 LTS ("Long Term Support") is available under the terms of the Extended Support Model.
+ */
+CKEDITOR.plugins.setLang( 'widget', 'it', {
+	'move': 'Fare clic e trascinare per spostare',
+	'label': 'Widget %1'
+} );
