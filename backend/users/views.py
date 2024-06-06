@@ -131,5 +131,6 @@ def add_to_favorite(request, *args, **kwargs):
         if not favorite:
             favorite = Favorite.objects.create(user=user)
         favorite.post.add(Post.objects.get(id=post_id))
-        return 
+        return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
+
         
