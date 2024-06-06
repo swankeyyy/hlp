@@ -72,7 +72,9 @@
                                         </div>
                                         <div class="d-flex me-2" title="Добавить в закладки">
                                             <div class="">
-                                                <i class="fa-regular fa-bookmark"></i>
+                                                <a href="{% url "add_to_favorite" post.id %}">
+                                                    <i class="fa-regular fa-bookmark"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>

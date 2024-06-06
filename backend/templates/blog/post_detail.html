@@ -46,13 +46,13 @@
                                 </div>
                             {% endif %}
                             <div class="card_description">
-                                {{ post.description }}
+                                {{ post.description|safe }}
 
                             </div>
                             <div class="my-2">Теги:
                                 {% for tag in post.tag.all %}
 
-                                    <span class=" "><a href="#">{{ tag.name }}</a></span>
+                                    <span>{{ tag.name }}</span>
 
                                 {% endfor %}
 

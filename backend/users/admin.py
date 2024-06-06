@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User
+from .models import User, Favorite
 from django.contrib.auth.models import Group
 
 admin.site.unregister(Group)
@@ -12,6 +12,16 @@ class UserAdmin(admin.ModelAdmin):
 
     save_on_top = True
     save_as = True
+
+@admin.register(Favorite)
+class FavoriteAdmin(admin.ModelAdmin):
+    list_display = ("id", "user")
+    list_filter = ("user",)
+
+    save_on_top = True
+    save_as = True
+
+
 
 
 admin.site.site_header = 'Админка helper'

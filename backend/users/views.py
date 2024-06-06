@@ -1,15 +1,19 @@
-from django.contrib.auth import authenticate, login, logout, get_user_model
-from django.contrib.auth.views import LoginView, PasswordChangeView
+
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
 from django.http import HttpResponseRedirect
+from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, UpdateView
+from django.views import View
+from django.views.generic import CreateView, ListView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import *
-from .models import User
+from .models import User, Favorite
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from common.views import CommonTitleMixin
+from blog.models import Post
 
 """
 context['reg'] = 'reg' // We overturn the reg wherever you need to remove the site bar (main.html)
@@ -92,3 +96,40 @@ def logout_user(request):
         return HttpResponseRedirect(reverse('main_page_view'))
     except:
         return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
+
+
+
+
+
+
+
+    
+
+class UserFavoritesView(View):
+    title = "Избранное"
+    
+    def get(self, request, *args, **kwargs):
+        user = self.request.user
+        posts = Favorite.objects.filter(user=user)[0].post.all()
+        return render(request, "blog/all_posts.html", {'posts': posts, 'title': self.title})
+
+
+
+
+
+
+
+
+
+def add_to_favorite(request, *args, **kwargs):
+    """Add post to users bookmarks(favorite posts), take user from request, takes post from post_id"""
+    if request.method == "GET":
+        user = request.user
+        post_id = kwargs["id"]
+        post = Post.objects.get(id=post_id)
+        favorite = Favorite.objects.filter(user=user)[0]
+        if not favorite:
+            favorite = Favorite.objects.create(user=user)
+        favorite.post.add(Post.objects.get(id=post_id))
+        return 
+        

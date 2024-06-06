@@ -6,9 +6,11 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('admin/', admin.site.urls),
+    
     path('', include('blog.urls')),
     path('', include('comment.urls')),
-    path('', include('users.urls')),  # добавить книгу/ namespace="users" пространство имен
+    path('', include('users.urls')),
+      # добавить книгу/ namespace="users" пространство имен
 
 ]
 

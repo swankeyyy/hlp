@@ -45,9 +45,9 @@
                 </button>
 
                 {% if user.is_authenticated %}
-                    <button type="button" class="btn header_search" title="Закладки">
+                    <a href="{% url 'favorites' user.id %}"><button type="button" class="btn header_search" title="Закладки">
                         <i class="fa-regular fa-bookmark fa-xl"></i>
-                    </button>
+                    </button></a>
 
                     <button type="button" class="btn header_login" data-bs-toggle="offcanvas"
                             data-bs-target="#loginsetoffcanvas" aria-controls="loginsetoffcanvas" title="Admin">
