@@ -126,14 +126,12 @@ def add_to_favorite(request, *args, **kwargs):
     if request.method == "GET":
         user = request.user
         post_id = kwargs["id"]
-        post = Post.objects.get(id=post_id)
         favorite = Favorite.objects.filter(user=user)
         if not favorite:
             favorite = Favorite.objects.create(user=user)
-            favorite.post.add(Post.objects.get(id=post_id))
         else:
             favorite = favorite[0]
-            favorite.post.add(Post.objects.get(id=post_id))
+        favorite.post.add(Post.objects.get(id=post_id))
         return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
 
         
