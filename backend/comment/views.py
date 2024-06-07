@@ -16,7 +16,7 @@ def create_comment(request):
 
         comment_instance = Comment(content=content, user=user, post=post)
         comment_instance.save()
-        print(1)
+
 
     return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
 

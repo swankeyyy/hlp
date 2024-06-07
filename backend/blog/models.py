@@ -95,6 +95,7 @@ class Post(models.Model):
     )
     url = models.SlugField(unique=True, max_length=50, verbose_name="URL")
     description = models.TextField(verbose_name="Контент")
+    preview_description = models.TextField(verbose_name="Описание", default=True)
     category = models.ForeignKey(
         to=Category,
         on_delete=models.CASCADE,

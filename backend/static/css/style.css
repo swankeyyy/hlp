@@ -178,9 +178,7 @@ a {
     max-height: 300px;
     overflow: hidden;
 
-    -webkit-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.5);
+
 
 }
 
@@ -188,6 +186,10 @@ a {
     max-width: 100%;
     height: auto;
     object-fit: cover;
+
+    -webkit-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.5);
 }
 
 /* card_detail */
