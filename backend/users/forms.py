@@ -96,7 +96,7 @@ class SuggestArticleForm(forms.ModelForm):
 
     content = forms.CharField(
         widget=forms.Textarea(attrs={'class': 'form-control', 'id': 'comment_content',
-                                     'placeholder': ' Предложить новость', 'style': "min-height: 100px"}))
+                                     'placeholder': ' Предложить статью', 'style': "min-height: 100px"}))
     class Meta:
         model = SuggestArticle
         fields = ['content', ]

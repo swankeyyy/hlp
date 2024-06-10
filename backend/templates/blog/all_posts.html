@@ -31,10 +31,10 @@
                                     <div class="card_time">{{ post.time_created|timesince }} назад</div>
                                 </div>
                                 <div class="d-flex mb-2 ">
-                                    <div class="me-2">{{ post.language.icon|safe }}</div>
+                                    <div class="me-2 post_language_icon ">{{ post.language.icon|safe }}</div>
                                     {% for cat in post.category.get_family %}
                                         <div class="me-2">
-                                            <span class="badge text-bg-secondary">{{ cat.name }}</span>
+                                            <span class="badge text-bg-secondary">  {{ cat.name }}</span>
                                         </div>
                                     {% endfor %}
                                 </div>

@@ -2,7 +2,7 @@ from django.conf import settings
 from django.db import models
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
-
+from django.urls import reverse
 
 class Ip(models.Model):
 
@@ -83,6 +83,7 @@ class Category(MPTTModel):
         verbose_name_plural = "Категории"
 
 
+
 class Post(models.Model):
     """Single Post model, with null author if author is admin, with category and tags"""
 
@@ -132,6 +133,8 @@ class Post(models.Model):
         ordering = ["-time_created"]
         verbose_name = "Пост"
         verbose_name_plural = "Посты"
+
+
 
 
 class PostImage(models.Model):

@@ -15,7 +15,7 @@ from common.views import CommonTitleMixin
 from blog.models import Post
 
 """
-context['reg'] = 'reg' // We overturn the reg wherever you need to remove the site bar (main.html)
+context['reg'] = 'reg' // connect the reg where you need to remove the site bar (main.html)
 {% if not reg %}
     {% include 'UI/include/sidebar.html' %}
 {% endif %}
@@ -26,6 +26,8 @@ context['reg'] = 'reg' // We overturn the reg wherever you need to remove the si
 class RegisterUser(SuccessMessageMixin, CreateView):
     """
     Registration
+    context['reg'] = 'reg' // connect the reg where you need to remove the site bar (main.html)
+
     """
     form_class = RegisterUserForm
     template_name = "users/register.html"
@@ -59,6 +61,8 @@ def login_user(request):
 class ProfileUser(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     """
     Profile user
+    context['reg'] = 'reg' // connect the reg where you need to remove the site bar (main.html)
+
     """
     model = User
     form_class = ProfileUserForm
@@ -122,7 +126,8 @@ def add_to_favorite(request, *args, **kwargs):
 
 class UserArticle(SuccessMessageMixin, CreateView):
     """
-    Подключаем комментарии к посту
+    Adding comments to the post
+    context['reg'] = 'reg' // connect the reg where you need to remove the site bar (main.html)
     """
     form_class = SuggestArticleForm  # форма
     template_name = 'users/suggest_article.html'
@@ -130,8 +135,8 @@ class UserArticle(SuccessMessageMixin, CreateView):
 
     def form_valid(self, form):
         """
-        связываем коммент к посту, формируем запись без занесения в бд,
-        определяем пользователя , после сохраняем в бд
+        linking a comment to a post, creating a record without entering it into the database,
+        we define the user, then save it in the database
         """
         # form.instance.com_id = self.kwargs.get("pk")
         self.object = form.save(commit=False)
@@ -140,7 +145,7 @@ class UserArticle(SuccessMessageMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Предложить новость'
+        context['title'] = 'Предложить статью'
         context['description'] = ('Здесь вы можете предложить статью для размещения на сайте '
                                   'или высказать свои пожелания, '
                                   'какие материалы хотели бы увидеть у нас.')

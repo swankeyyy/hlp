@@ -47,6 +47,7 @@ img {
 
 a {
     text-decoration: none;
+
 }
 
 /*  ----------------- /основные -------------------  */
@@ -202,6 +203,10 @@ a {
     object-fit: cover;
 }
 
+.badge a{
+    color: #fff;
+}
+
 /* card_detail */
 .card_title_detail h1 {
     font-size: 26px;
@@ -210,6 +215,13 @@ a {
 
 .profile_title h1 {
     font-size: 24px;
+}
+
+.post_language_icon i{
+    border: 1px solid red;
+    width: 40px;
+    height: 40px;
+    color: yellow;
 }
 
 /* /card_detail */
