@@ -10,7 +10,8 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),  # выход
     path('profile/', ProfileUser.as_view(), name='profile'),
     path('favorites/<int:id>/', UserFavoritesView.as_view(), name='favorites'),
-    path('add_to_favorite/<int:id>', add_to_favorite, name="add_to_favorite")
+    path('add_to_favorite/<int:id>', add_to_favorite, name="add_to_favorite"),
+    path('suggest_article/', UserArticle.as_view(), name="suggest_article"),
 ]
 
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, Favorite
+from .models import User, Favorite, SuggestArticle
 from django.contrib.auth.models import Group
 
 admin.site.unregister(Group)
@@ -17,6 +17,14 @@ class UserAdmin(admin.ModelAdmin):
 class FavoriteAdmin(admin.ModelAdmin):
     list_display = ("id", "user")
     list_filter = ("user",)
+
+    save_on_top = True
+    save_as = True
+
+@admin.register(SuggestArticle)
+class SuggestArticleAdmin(admin.ModelAdmin):
+    list_display = ("id", "author", "time_created", "is_processed",)
+    list_filter = ("author",)
 
     save_on_top = True
     save_as = True

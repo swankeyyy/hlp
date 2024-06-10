@@ -1,4 +1,3 @@
-
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
@@ -32,7 +31,7 @@ class RegisterUser(SuccessMessageMixin, CreateView):
     template_name = "users/register.html"
     extra_context = {"title": "Регистрация"}
     success_url = reverse_lazy("main_page_view")
-    success_message = "Вы успешно зарегистрировались! "
+    success_message = "Вы успешно зарегистрировались! Для входа в систему ,авторизуйтесь."
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -54,7 +53,6 @@ def login_user(request):
             user = authenticate(username=user.username, password=password)
             if user:
                 login(request, user)
-                messages.success(request, "Вы успешно авторизованы")
         return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
 
 
@@ -98,27 +96,13 @@ def logout_user(request):
         return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
 
 
-
-
-
-
-
-    
-
 class UserFavoritesView(View):
     title = "Избранное"
-    
+
     def get(self, request, *args, **kwargs):
         user = self.request.user
         posts = Favorite.objects.filter(user=user)[0].post.all()
         return render(request, "blog/all_posts.html", {'posts': posts, 'title': self.title})
-
-
-
-
-
-
-
 
 
 def add_to_favorite(request, *args, **kwargs):
@@ -132,6 +116,39 @@ def add_to_favorite(request, *args, **kwargs):
         else:
             favorite = favorite[0]
         favorite.post.add(Post.objects.get(id=post_id))
+        print(user.favorite)
         return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
 
-        
+
+class UserArticle(SuccessMessageMixin, CreateView):
+    """
+    Подключаем комментарии к посту
+    """
+    form_class = SuggestArticleForm  # форма
+    template_name = 'users/suggest_article.html'
+    success_message = "Форма отправлена"
+
+    def form_valid(self, form):
+        """
+        связываем коммент к посту, формируем запись без занесения в бд,
+        определяем пользователя , после сохраняем в бд
+        """
+        # form.instance.com_id = self.kwargs.get("pk")
+        self.object = form.save(commit=False)
+        self.object.author = self.request.user
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Предложить новость'
+        context['description'] = ('Здесь вы можете предложить статью для размещения на сайте '
+                                  'или высказать свои пожелания, '
+                                  'какие материалы хотели бы увидеть у нас.')
+        context['reg'] = 'reg'
+        return context
+
+    def get_success_url(self):
+        """
+        redirect to profile
+        """
+        return reverse_lazy('suggest_article')

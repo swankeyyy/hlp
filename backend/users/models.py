@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from blog.models import Post
@@ -22,3 +23,19 @@ class Favorite(models.Model):
     class Meta:
         verbose_name = "Любимый пост"
         verbose_name_plural = "Любимые посты"
+
+
+class SuggestArticle(models.Model):
+    """
+    suggest article in user settings
+    """
+    content = models.TextField(verbose_name='Текст')
+    author = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, related_name='posts', null=True,
+                               default=None)
+    time_created = models.DateField(auto_now_add=True)
+    is_processed = models.BooleanField(default=False, verbose_name='Обработана', )
+
+    class Meta:
+        ordering = ["-time_created"]
+        verbose_name = "Предложенная статья"
+        verbose_name_plural = "Предложеннае статьи"

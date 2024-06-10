@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
 
-from users.models import User
+from users.models import User, SuggestArticle
 
 
 class RegisterUserForm(UserCreationForm):
@@ -70,6 +70,7 @@ class ProfileUserForm(forms.ModelForm):
                                widget=forms.TextInput(attrs={'class': 'form-control'}))
     email = forms.CharField(disabled=True, label="E-mail",
                             widget=forms.TextInput(attrs={'class': 'form-control'}))
+
     # image = forms.ImageField(required=False, widget=forms.FileInput(attrs={'class': 'fadeIn second',
     #                                                                        'placeholder': 'аватар', }))
 
@@ -86,3 +87,16 @@ class ProfileUserForm(forms.ModelForm):
             'first_name': forms.TextInput(attrs={'class': 'form-control'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control'}),
         }
+
+
+class SuggestArticleForm(forms.ModelForm):
+    """
+    suggest article in user settings
+    """
+
+    content = forms.CharField(
+        widget=forms.Textarea(attrs={'class': 'form-control', 'id': 'comment_content',
+                                     'placeholder': ' Предложить новость', 'style': "min-height: 100px"}))
+    class Meta:
+        model = SuggestArticle
+        fields = ['content', ]

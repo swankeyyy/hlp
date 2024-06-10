@@ -87,14 +87,18 @@ a {
 .user_img_header {
     width: 38px;
     height: 38px;
-    /*border-radius: 50%;*/
+    overflow: hidden;
+}
+
+.user_img_preview {
+    width: 100px;
+    min-height: 100%;
     overflow: hidden;
 }
 
 .user_img_canvas {
     width: 38px;
     height: 38px;
-
     overflow: hidden;
 }
 
@@ -103,6 +107,14 @@ a {
 /*  ----------------- main -------------------  */
 
 /*  ----------------- body -------------------  */
+.main {
+
+
+    width: 100%;
+
+}
+
+
 .card_img {
     width: 30px;
     height: 30px;
@@ -191,10 +203,15 @@ a {
 }
 
 /* card_detail */
-.card_title_detail h1{
+.card_title_detail h1 {
     font-size: 26px;
 
 }
+
+.profile_title h1 {
+    font-size: 24px;
+}
+
 /* /card_detail */
 
 
@@ -252,7 +269,7 @@ a {
     font-weight: normal;
 }
 
-.star_item_h2 a{
+.star_item_h2 a {
     color: var(--text-color);
 }
 
@@ -294,11 +311,19 @@ a {
 .btn_reg {
     border-color: black;
     display: block;
+    /*width: 100%;*/
+    border-radius: 0;
+}
+
+.btn_reg_modal {
+    border-color: black;
+    display: block;
     width: 100%;
     border-radius: 0;
 }
 
-.btn_reg:hover {
+.btn_reg:hover,
+.btn_reg_modal:hover {
     border-color: black;
 
     -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.61);
