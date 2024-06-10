@@ -70,20 +70,28 @@
                                                 <a href="{{ post.url }}"><i class="fa-solid fa-share"></i></a>
                                             </div>
                                         </div>
+
+
+
+
+
                                         <div class="d-flex me-2" title="Добавить в закладки">
                                             <div class="">
-                                                {{ favorite.post }}
-                                                {% for foo in  favorite.post %}
-                                                	{{ foo }}
-                                                {% endfor %}
-
-
-
+                                                {% if post in user.favorite.all.0.post.all %}
+                                                <a href="{% url "remove_from_favorite" post.id %}">
+                                                    <i class="fa-regular fa-bookmark"></i>
+                                                </a>
+                                                {% else %}
                                                 <a href="{% url "add_to_favorite" post.id %}">
                                                     <i class="fa-regular fa-bookmark"></i>
                                                 </a>
+                                                {% endif %}
                                             </div>
                                         </div>
+
+
+
+
                                     </div>
                                     <div class="card_link">
                                         <a href="{% url "post_detail_view" post.url %}">Подробнее...</a>

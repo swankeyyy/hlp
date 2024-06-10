@@ -120,7 +120,19 @@ def add_to_favorite(request, *args, **kwargs):
         else:
             favorite = favorite[0]
         favorite.post.add(Post.objects.get(id=post_id))
-        print(user.favorite)
+
+        return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
+
+def remove_from_favorite(request, *args, **kwargs):
+    """Remove post from favorites for current user if he is logged in"""
+
+    if request.method == "GET":
+        user = request.user
+        post_id = kwargs["id"]
+        post = Post.objects.get(id=post_id)
+        favorite = Favorite.objects.filter(user=user)[0]
+
+        favorite.post.remove(post)
         return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
 
 
