@@ -72,25 +72,23 @@
                                         </div>
 
 
-
-
-
-                                        <div class="d-flex me-2" title="Добавить в закладки">
-                                            <div class="">
-                                                {% if post in user.favorite.all.0.post.all %}
-                                                <a href="{% url "remove_from_favorite" post.id %}">
-                                                    <i class="fa-regular fa-bookmark"></i>
-                                                </a>
-                                                {% else %}
-                                                <a href="{% url "add_to_favorite" post.id %}">
-                                                    <i class="fa-regular fa-bookmark"></i>
-                                                </a>
-                                                {% endif %}
+                                        {% if post in user.favorite.all.0.post.all %}
+                                            <div class="d-flex me-2" title="Удалить из закладок">
+                                                <div class="">
+                                                    <a href="{% url "remove_from_favorite" post.id %}">
+                                                        <i class="fa-solid fa-bookmark  remove_from_favorite"></i>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-
-
-
+                                        {% else %}
+                                            <div class="d-flex me-2" title="Добавить в закладки">
+                                                <div class="">
+                                                    <a href="{% url "add_to_favorite" post.id %}">
+                                                        <i class="fa-regular fa-bookmark add_to_favorite"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        {% endif %}
 
                                     </div>
                                     <div class="card_link">

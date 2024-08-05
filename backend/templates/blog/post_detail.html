@@ -30,7 +30,7 @@
                                 <h1>{{ post.name }}</h1>
                             </div>
                             <div class="d-flex mb-2">
-                                <div class="me-2">{{ post.language.icon|safe }}
+                                <div class="me-2 post_language_icon">{{ post.language.icon|safe }}
                                 </div>
                                 {% for cat in post.category.get_family %}
                                     <div class="me-2"><span class="badge text-bg-secondary">{{ cat.name }}</span>

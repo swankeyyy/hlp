@@ -3,6 +3,8 @@ from django.db.models import F
 from django.db.models.query import QuerySet
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
+
+from users.models import Favorite
 from .models import Post, Category
 from common.views import CommonTitleMixin
 from comment.forms import NewCommentForm
@@ -63,6 +65,7 @@ class PostDetailView(CommonTitleMixin, DetailView):
         self.object.refresh_from_db()
         context['title'] = self.get_object().name
         context['comments'] = self.get_object().comment.order_by('-id')
+
         context['comment_form'] = NewCommentForm
         return context
 

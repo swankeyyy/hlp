@@ -124,6 +124,7 @@ a {
 .card_time,
 .card_login {
     font-size: 15px;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .card_login {
@@ -149,9 +150,7 @@ a {
     text-indent: 20px;
 }
 
-.card_time {
-    color: rgba(0, 0, 0, 0.5);
-}
+
 
 .card_link a {
     color: var(--title-color);
@@ -207,6 +206,14 @@ a {
     color: #fff;
 }
 
+.remove_from_favorite{
+    color: var(--text-color);
+}
+
+.add_to_favorite{
+    color:  rgba(0, 0, 0, 0.5);;
+}
+
 /* card_detail */
 .card_title_detail h1 {
     font-size: 26px;
@@ -218,10 +225,12 @@ a {
 }
 
 .post_language_icon i{
-    border: 1px solid red;
-    width: 40px;
-    height: 40px;
-    color: yellow;
+    /*font-weight: 400;*/
+    /*color: yellow;*/
+    color: #FFD43B;
+    font-size: 1.5em;
+    line-height: .04167em;
+    vertical-align: -0.2em;
 }
 
 /* /card_detail */
