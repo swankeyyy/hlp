@@ -1,0 +1,48 @@
+
+
+.text-underlined{
+  position: relative;
+  overflow: hidden;
+
+  will-change: color;
+  transition: color .25s ease-out;
+}
+
+.text-underlined::before,
+.text-underlined::after{
+  content: "";
+  width: 0;
+  height: 3px;
+  background-color: var(--textUnderlinedLineColor, currentColor);
+
+  will-change: width;
+  transition: width .1s ease-out;
+
+  position: absolute;
+  bottom: 0;
+}
+
+.text-underlined::before{
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.text-underlined::after{
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.text-underlined:hover::before,
+.text-underlined:hover::after{
+  width: 100%;
+  transition-duration: .2s;
+}
+
+/*
+
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <main class="main">
+        <div class="container-fluid">
+            <div class="row">
+                {% block content %}
+                {% endblock content %}
+
+                {% if not reg %}
+
+                    {% include 'UI/include/sidebar.html' %}
+
+                {% endif %}
+
+            </div>
+        </div>
+
+    </main><!-- main -->
+{% endblock main %}

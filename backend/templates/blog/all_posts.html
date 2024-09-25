@@ -1,13 +1,108 @@
-{% extends 'blog/../base.html' %}
+{% extends 'UI/include/main.html' %}
+{% load static %}
 
 {% block content %}
+    <div class="col">
+        <div class="container-fluid h-100">
+            <div class="row body_row">
+                <div class="col-12 body">
+                    {% if error_search_message %}
+                        <h1>{{ error_search_message }}</h1>
+                    {% endif %}
+                    {% for post in posts %}
+                        <div class="body_item">
+                            <div class="my-1 card_">
+                                <div class="d-flex  d-flex align-items-center mb-1">
 
-    <h1>TEst content</h1>
 
-    {% for post in posts %}
+                                    <div class="user_img_header rounded-5 me-2">
+                                        {% if post.author.image %}
+                                            <img src="{{ post.author.image.url }}" alt="">
+                                        {% else %}
+                                            <img src="{% static 'img/no-name.jpg' %}" alt="">
+                                        {% endif %}
+                                    </div>
 
-        <div class="h4">{{ post.name }}</div>
+                                    {% if post.author %}
+                                        <div class="card_login me-2">{{ post.author.username }}</div>
+                                    {% else %}
+                                        <div class="card_login me-2">admin</div>
+                                    {% endif %}
+                                    <div class="card_time">{{ post.time_created|timesince }} назад</div>
+                                </div>
+                                <div class="d-flex mb-2 ">
+                                    <div class="me-2 post_language_icon ">{{ post.language.icon|safe }}</div>
+                                    {% for cat in post.category.get_family %}
+                                        <div class="me-2">
+                                            <span class="badge text-bg-secondary">  {{ cat.name }}</span>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="card_title">
+                                    <h2><a href="{% url "post_detail_view" post.url %}">{{ post.name }}</a></h2>
+                                </div>
+                                {% if post.preview_image %}
+                                    <div class="my-2 img_post_pr">
+                                        <img src="{{ post.preview_image.url }}" alt="{{ post.name }}"/>
+                                    </div>
+                                {% endif %}
+                                <div class="card_description">
+                                    <p>{{ post.preview_description|safe|truncatechars:600 }}</p>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex">
+                                        <div class="d-flex me-2" title="Количество просмотров">
+                                            <div class="">
+                                                <i class="fa-regular fa-eye"></i>
+                                            </div>
+                                            <div class="">
+                                                <p>{{ post.views }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex me-2" title="Комментарии">
+                                            <div class="">
+                                                <i class="fa-regular fa-comment"></i>
+                                            </div>
+                                            <div class="">{{ post.comment.count }}</div>
+                                        </div>
+                                        <div class="d-flex me-2" title="Поделиться">
+                                            <div class="card_link">
+                                                <a href="{{ post.url }}"><i class="fa-solid fa-share"></i></a>
+                                            </div>
+                                        </div>
 
-    {% endfor %}
 
-{% endblock content %}
+                                        {% if post in user.favorite.all.0.post.all %}
+                                            <div class="d-flex me-2" title="Удалить из закладок">
+                                                <div class="">
+                                                    <a href="{% url "remove_from_favorite" post.id %}">
+                                                        <i class="fa-solid fa-bookmark  remove_from_favorite"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        {% else %}
+                                            <div class="d-flex me-2" title="Добавить в закладки">
+                                                <div class="">
+                                                    <a href="{% url "add_to_favorite" post.id %}">
+                                                        <i class="fa-regular fa-bookmark add_to_favorite"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+
+                                    </div>
+                                    <div class="card_link">
+                                        <a href="{% url "post_detail_view" post.url %}">Подробнее...</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% include 'UI/include/paginate.html' %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

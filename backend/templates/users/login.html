@@ -1,0 +1,71 @@
+{% load static %}
+
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="loginModalLabel">Авторизация</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <nav class="navbar bg-body-tertiary">
+                        <div class="container-fluid">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                           aria-describedby="emailHelp">
+                                    <div id="emailHelp" class="form-text">We'll never share your email with anyone
+                                        else.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1">
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+{% comment %} 
+<form method="post">
+    {% csrf_token %}
+    {# <input type="hidden" name="next", value="{{ next }}" />#}
+    {# перенапровлени#}
+    {#    {{ form.non_field_errors }}#}
+    {#        общие ошибки      #}
+    {#    {% for f in form %}#}
+    {#        <div class="mb-3">#}
+    {#            <label for="{{ f.id_for_label }}" class="form-label">{{ f.label }}</label>#}
+    {#            {{ f }}#}
+    {#            <div class="invalid-feedback">#}
+    {#                {{ f.errors }}#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    {% endfor %}#}
+
+
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary btn-block">Войти</button>
+    <p><a href="{%  url 'register' %}">регистрация</a></p>
+
+</form> {% endcomment %}

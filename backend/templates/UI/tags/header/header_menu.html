@@ -1,17 +1,37 @@
 {% load mptt_tags %}
 
-<li class="dropdown">
-  <a href="#">Категории</a>
-  <ul class="dropdown__menu">
-    {% recursetree menu %}
-      <li>
-        <a href="#">{{ node.name }}</a>
-        {% if not node.is_leaf_node %}
-          <ul class="children">
-            {{ children }}
-          </ul>
-        {% endif %}
-      </li>
-    {% endrecursetree %}
-  </ul>
-</li>
+<div class="offcanvas-body ">
+    <ul class="navbar-nav ">
+        <li class="nav-item">
+            <a class="nav-link text-underlined" aria-current="page" href="{% url 'main_page_view' %} ">Главная</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-underlined" href="#">О нас</a>
+        </li>
+
+
+        {% for menu_item in menu %}
+            {% if menu_item.get_children %}
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle text-underlined " href="{% url "category_view" menu_item.url %}" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ menu_item.name }}
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% for children in menu_item.get_children %}
+                            <li><a class="dropdown-item" href="{% url "category_view" children.url %}">{{ children.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link text-underlined" href="#">{{ menu_item.name }}</a>
+                </li>
+            {% endif %}
+
+        {% endfor %}
+
+
+    </ul>
+</div>
+

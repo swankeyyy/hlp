@@ -1,0 +1,30 @@
+<div class="star">
+    <div class="star_h1"><h1>Популярные статьи:</h1></div>
+    <hr>
+
+    {% for post in posts %}
+
+
+    <div class="star_item  mb-2">
+        <div class="d-flex align-items-center">
+            <div class="me-1">{{ post.language.icon|safe }}</div>
+            <div class="star_item_h2"><a href="{% url 'post_detail_view' post.url %}">{{ post.name|truncatechars:35 }}</a></div>
+        </div>
+
+        <div class="star_icons d-flex ">
+            <div class="d-flex me-3 " title="Количество просмотров">
+                <div class=""><i class="fa-regular fa-eye "></i></div>
+                <div class="mx-1"><p>{{ post.views }}</p></div>
+            </div>
+            <div class="d-flex me-2" title="Комментарии">
+                <div class=""><i class="fa-regular fa-comment"></i></div>
+                <div class="mx-1">{{ post.comment.count }}</div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+    
+
+
+</div>

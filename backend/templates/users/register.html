@@ -1,0 +1,52 @@
+{% extends 'UI/include/main.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+    <div class="col-md-12 ">
+        <div class="reg_body">
+            {% if user.is_authenticated %}
+                <p>Для регистрации нужно выйти из аккаунта</p>
+            {% else %}
+
+                <div class="profile_title"><h1>Регистрация:</h1> </div>
+                <hr>
+                <form method="post" >
+                    {% csrf_token %}
+
+
+                    {{ form.non_field_errors }}
+
+                    {% for f in form %}
+                        <div class="my-3 row">
+                            <label for="{{ f.id_for_label }}"
+                                   class="col-sm-3 col-form-label">{{ f.label }}</label>
+                            <div class="col-sm">
+                                {{ f }}
+                            </div>
+
+                            <div class="invalid-feedback">
+                                {{ f.errors }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="d-flex">
+                        <input id="html" type="checkbox" class="me-2" required>
+                        <label for="html">Я принимаю условия <a href="#">Пользовательского соглашения</a></label>
+                    </div>
+
+
+                    <button type="submit" class="btn btn_reg my-3">Зарегистрироваться</button>
+
+                </form>
+            {% endif %}
+
+
+        </div>
+    </div>
+
+
+
+{% endblock %}
