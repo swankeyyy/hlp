@@ -11,6 +11,7 @@ It_Hlp - совместный с https://github.com/Lavarenka проект, пр
 
 Проект поднимается в докере. Подключен nginx, в качестве БД выбрана postgreSQL.
 
+http://82.148.17.235
 
 ![Python](https://img.shields.io/badge/-Python-black?style=flat-square&logo=Python)
 ![Django](https://img.shields.io/badge/-Django-0aad48?style=flat-square&logo=Django)
