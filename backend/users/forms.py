@@ -71,8 +71,7 @@ class ProfileUserForm(forms.ModelForm):
     email = forms.CharField(disabled=True, label="E-mail",
                             widget=forms.TextInput(attrs={'class': 'form-control'}))
 
-    # image = forms.ImageField(required=False, widget=forms.FileInput(attrs={'class': 'fadeIn second',
-    #                                                                        'placeholder': 'аватар', }))
+
 
     class Meta:
         model = User

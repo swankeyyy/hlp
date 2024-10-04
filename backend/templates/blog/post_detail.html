@@ -3,7 +3,7 @@
 {% load mptt_tags %}
 
 {% block content %}
-    <div class="col">
+    <div class="col col-lg-9">
         <div class="container-fluid h-100 ">
             <div class="row body_row">
                 <div class="col-12 body">
@@ -45,8 +45,9 @@
                                     <img src="{{ post.preview_image.url }}" alt="{{ post.name }}"/>
                                 </div>
                             {% endif %}
-                            <div class="card_description">
-                                {{ post.description|safe }}
+                            <div class=" ">
+                                <div class="card_description">{{ post.description|safe }}</div>
+                                
 
                             </div>
                             <div class="my-2">Теги:
