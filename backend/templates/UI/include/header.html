@@ -46,6 +46,7 @@
 
                 {% if user.is_authenticated %}
                     <a href="{% url 'favorites' user.id %}"><button type="button" class="btn header_search" title="Закладки">
+                        {{ user.favorite.all.0.post.all.count }}
                         <i class="fa-regular fa-bookmark fa-xl"></i>
                     </button></a>
 

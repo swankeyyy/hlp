@@ -65,31 +65,38 @@
                                             </div>
                                             <div class="">{{ post.comment.count }}</div>
                                         </div>
-                                        <div class="d-flex me-2" title="Поделиться">
-                                            <div class="card_link">
-                                                <a href="{{ post.url }}"><i class="fa-solid fa-share"></i></a>
-                                            </div>
-                                        </div>
+                                        {#                                        <div class="d-flex me-2" title="Поделиться">#}
+                                        {#                                            <div class="card_link">#}
+                                        {#                                                <a href="{{ post.url }}"><i class="fa-solid fa-share"></i></a>#}
+                                        {#                                            </div>#}
+                                        {#                                        </div>#}
 
-
-
-
-
-                                        <div class="d-flex me-2" title="Добавить в закладки">
-                                            <div class="">
-                                                {% if post in user.favorite.all.0.post.all %}
-                                                <a href="{% url "remove_from_favorite" post.id %}">
-                                                    <i class="fa-regular fa-bookmark"></i>
-                                                </a>
-                                                {% else %}
-                                                <a href="{% url "add_to_favorite" post.id %}">
-                                                    <i class="fa-regular fa-bookmark"></i>
-                                                </a>
-                                                {% endif %}
-                                            </div>
-                                        </div>
-
-
+                                        {% if user.is_authenticated %}
+                                            {% if post in user.favorite.all.0.post.all %}
+                                                <div class="d-flex me-2" title="Удалить из закладок">
+                                                    <div class="bookmark">
+                                                        <a href="{% url "remove_from_favorite" post.id %}">
+                                                            <i class="fa-solid fa-check fa-2xs"></i> <i
+                                                                class="fa-solid fa-bookmark"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            {% else %}
+                                                <div class="d-flex me-2" title="Добавить в закладки">
+                                                    <div class="bookmark">
+                                                        <a href="{% url "add_to_favorite" post.id %}">
+                                                            <i class="fa-regular fa-bookmark"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% else %}
+                                            <div class="d-flex me-2" title="Для добавления закладок, авторизуйтесь">
+                                                    <div class=" bookmark_user">
+                                                            <i class="fa-regular fa-bookmark"></i>
+                                                    </div>
+                                                </div>
+                                        {% endif %}
 
 
                                     </div>

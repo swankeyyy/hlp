@@ -206,7 +206,7 @@ a {
     object-fit: cover;
 }
 
-.badge a{
+.badge a {
     color: #fff;
 }
 
@@ -220,11 +220,20 @@ a {
     font-size: 24px;
 }
 
-.post_language_icon i{
-    border: 1px solid red;
-    width: 40px;
-    height: 40px;
-    color: yellow;
+.post_language_icon i {
+    font-size: 2em;
+    /*color: yellow;*/
+}
+
+.bookmark a {
+    color: black;
+
+}
+
+.bookmark_user i {
+    color: rgba(0, 0, 0, 0.5);
+
+
 }
 
 /* /card_detail */

@@ -21,7 +21,7 @@
                                 {% if post.author %}
                                     <div class="card_login me-2">{{ post.author.username }}</div>
                                 {% else %}
-                                    <div class="card_login me-2">User</div>
+                                    <div class="card_login me-2">admin</div>
                                 {% endif %}
                                 <div class="card_time">{{ post.time_created|timesince }} назад</div>
 
@@ -47,7 +47,7 @@
                             {% endif %}
                             <div class=" ">
                                 <div class="card_description">{{ post.description|safe }}</div>
-                                
+
 
                             </div>
                             <div class="my-2">Теги:
@@ -70,15 +70,29 @@
                                         <div class="me-1"><i class="fa-regular fa-comment"></i></div>
                                         <div class="">{{ post.comment.count }}</div>
                                     </div>
-                                    <div class="d-flex me-4 " title="Поделиться">
-                                        <div class="card_link card_time"><a href="#"><i
-                                                class="card_time fa-solid fa-share"></i></a>
+                                    {#                                    <div class="d-flex me-4 " title="Поделиться">#}
+                                    {#                                        <div class="card_link card_time"><a href="#"><i#}
+                                    {#                                                class="card_time fa-solid fa-share"></i></a>#}
+                                    {#                                        </div>#}
+                                    {#                                    </div>#}
+                                    {% if post in user.favorite.all.0.post.all %}
+                                        <div class="d-flex me-2" title="Удалить из закладок">
+                                            <div class="bookmark">
+                                                <a href="{% url "remove_from_favorite" post.id %}">
+                                                    <i class="fa-solid fa-check fa-2xs"></i> <i
+                                                        class="fa-solid fa-bookmark"></i>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="d-flex me-4 card_time" title="Добавить в закладки">
-                                        <div class=""><i class="fa-regular fa-bookmark"></i></div>
-
-                                    </div>
+                                    {% else %}
+                                        <div class="d-flex me-2" title="Добавить в закладки">
+                                            <div class="bookmark">
+                                                <a href="{% url "add_to_favorite" post.id %}">
+                                                    <i class="fa-regular fa-bookmark"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
                                 </div>
 
                             </div>
@@ -90,63 +104,65 @@
                                         <div class="col-10">
 
 
-                                        {% for comment in comments %}
+                                            {% for comment in comments %}
 
-                                            <div class="comment_item mb-2">
-                                                <div class="d-flex d-flex align-items-center comment_header p-1">
-                                                    <div class="user_img_comment rounded-2 me-2">
-                                                        {% if comment.user.image %}
-                                                            <img src="{{ comment.user.image.url }}" alt="">
+                                                <div class="comment_item mb-2">
+                                                    <div class="d-flex d-flex align-items-center comment_header p-1">
+                                                        <div class="user_img_comment rounded-2 me-2">
+                                                            {% if comment.user.image %}
+                                                                <img src="{{ comment.user.image.url }}" alt="">
+                                                            {% else %}
+                                                                <img src="{% static 'img/no-name.jpg' %}" alt="">
+                                                            {% endif %}
+                                                        </div>
+                                                        {% if post.author %}
+                                                            <div class="card_login me-2">{{ comment.user.username }}</div>
                                                         {% else %}
-                                                            <img src="{% static 'img/no-name.jpg' %}" alt="">
+                                                            <div class="card_login me-2">User</div>
+                                                        {% endif %}
+                                                        <div class="card_time">{{ comment.date|timesince }} назад...
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="p-1">
+                                                        <div class="">{{ comment.content }}
+                                                        </div>
+                                                        {% if comment.user == user %}
+                                                            <div class="mt-1 text-end">
+                                                                <a href="{% url "delete_comment" comment.pk %}">удалить</a>
+                                                            </div>
                                                         {% endif %}
                                                     </div>
-                                                    {% if post.author %}
-                                                        <div class="card_login me-2">{{ comment.user.username }}</div>
-                                                    {% else %}
-                                                        <div class="card_login me-2">User</div>
-                                                    {% endif %}
-                                                    <div class="card_time">{{ comment.date|timesince }} назад...</div>
-
                                                 </div>
-                                                <div class="p-1">
-                                                    <div class="">{{ comment.content }}
-                                                    </div>
-                                                    {% if comment.user == user %}
-                                                    <div class="mt-1 text-end">
-                                                        <a href="{% url "delete_comment" comment.pk %}">удалить</a></div>
-                                                    {% endif %}
-                                                </div>
-                                            </div>
 
-                                        {% endfor %}
+                                            {% endfor %}
 
 
 
 
 
                                             {% if user.is_authenticated %}
-                                            <div class="">
-                                                <form action="{% url "create_comment" %}" method="post">
-                                                    {% csrf_token %}
+                                                <div class="">
+                                                    <form action="{% url "create_comment" %}" method="post">
+                                                        {% csrf_token %}
 
-                                                    <div class="form-floating">
+                                                        <div class="form-floating">
                                                             {{ comment_form.content }}
 
-                                                        <label for="floatingTextarea2">Ваш комментарий</label>
-                                                        <input type="hidden" name="post_id" value="{{ post.id }}">
-                                                        <input type="hidden" name="user_id" value="{{ user.id }}">
-                                                        <div class="text-end">
+                                                            <label for="floatingTextarea2">Ваш комментарий</label>
+                                                            <input type="hidden" name="post_id" value="{{ post.id }}">
+                                                            <input type="hidden" name="user_id" value="{{ user.id }}">
+                                                            <div class="text-end">
 
-                                                            <button type="submit" class="btn">Отправить
-                                                            </button>
+                                                                <button type="submit" class="btn">Отправить
+                                                                </button>
+
+                                                            </div>
 
                                                         </div>
-
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        {% endif %}
+                                                    </form>
+                                                </div>
+                                            {% endif %}
 
                                         </div>
                                     </div>
