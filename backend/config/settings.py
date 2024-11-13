@@ -36,7 +36,12 @@ INSTALLED_APPS = [
     'comment',
 
     'mptt',
+
+    'django.contrib.sites',  # Добавьте это для работы с подтверждением по email
 ]
+
+SITE_ID = 1  # Не забудьте добавить это
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -124,6 +129,24 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'Temya.Kustodrot@yandex.ru'
+EMAIL_HOST_PASSWORD = 'ioirtoalngankzvq'
+EMAIL_USE_SSL = True
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = EMAIL_HOST_USER
+EMAIL_ADMIN = EMAIL_HOST_USER
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:80',
+    'http://localhost:1337',
+]
+
+
 
 # ckeditor
 

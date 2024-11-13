@@ -2,17 +2,20 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.views.generic import CreateView, ListView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+from config import settings
 from .forms import *
 from .models import User, Favorite
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from common.views import CommonTitleMixin
 from blog.models import Post
+from django.core.mail import send_mail
 
 """
 context['reg'] = 'reg' // connect the reg where you need to remove the site bar (main.html)
@@ -21,6 +24,26 @@ context['reg'] = 'reg' // connect the reg where you need to remove the site bar 
 {% endif %}
 
 """
+
+
+# class RegisterUser(SuccessMessageMixin, CreateView):
+#     """
+#     Registration
+#     context['reg'] = 'reg' // connect the reg where you need to remove the site bar (main.html)
+#
+#     """
+#     form_class = RegisterUserForm
+#     template_name = "users/register.html"
+#     extra_context = {"title": "Регистрация"}
+#     success_url = reverse_lazy("main_page_view")
+#     success_message = "Вы успешно зарегистрировались! Для входа в систему ,авторизуйтесь."
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['reg'] = 'reg'
+#         return context
+
+# accounts/views.py
 
 
 class RegisterUser(SuccessMessageMixin, CreateView):
@@ -41,6 +64,8 @@ class RegisterUser(SuccessMessageMixin, CreateView):
         return context
 
 
+
+
 def login_user(request):
     """view for login user, it takes data from templatetag
     check user by it email or login, if user exists takes his username
@@ -55,6 +80,11 @@ def login_user(request):
             user = authenticate(username=user.username, password=password)
             if user:
                 login(request, user)
+                messages.add_message(request, messages.INFO, "Вы авторизованы")
+            else:
+                messages.add_message(request, messages.ERROR, "Не верный пароль")
+        else:
+            messages.add_message(request, messages.ERROR, "Не верный логин")
         return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
 
 

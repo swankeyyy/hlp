@@ -6,9 +6,9 @@
 
 <!--  -->
 <div class="wrapper">
-    
+
     {% include 'UI/include/header.html' %} <!-- header -->
-    
+
     {% block main %}
     {% endblock main %}
 
@@ -17,13 +17,50 @@
     {% include 'UI/include/footer.html' %} <!-- footer -->
 
 
+    <div class="modal fade" tabindex="-1" id="loginModal_message">
+        <div class="modal-dialog ">
+            <div class="modal-content modal-dialog_message ">
 
+                <div class="modal-body">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
 </div> <!-- wrapper -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 <script src="{% static "js/style.js" %}"></script>
+
+{% if messages %}
+
+    <script defer>
+        $(document).ready(function () {
+            $('#loginModal_message').modal('show');
+
+            // Установите таймер на 1 секунду (1000 миллисекунд)
+            setTimeout(function () {
+                // Добавляем класс fade-out для начала анимации
+                $('#loginModal_message').addClass('fade-out');
+
+                // Ждем окончания анимации перед скрытием модального окна
+                setTimeout(function () {
+                    $('#loginModal_message').modal('hide').removeClass('fade-out'); // Скрываем модальное окно и удаляем класс
+                }, 500); // Должно совпадать с длительностью анимации
+            }, 2000);
+        });
+    </script>
+
+
+{% endif %}
 </body>
 </html>

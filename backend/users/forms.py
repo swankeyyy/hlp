@@ -18,7 +18,7 @@ class RegisterUserForm(UserCreationForm):
 
     class Meta:
         model = get_user_model()
-        fields = ['username', 'email', 'first_name', 'last_name', 'password1', 'password2']
+        fields = ['username', 'email', 'first_name', 'password1', 'password2']
         labels = {
             'email': 'E-mail',
             'first_name': 'Имя',
@@ -41,6 +41,19 @@ class RegisterUserForm(UserCreationForm):
             raise forms.ValidationError("Такой email уже существует")
         return email
 
+# class RegisterUserForm(forms.ModelForm):
+#     password = forms.CharField(widget=forms.PasswordInput)
+#     password_confirm = forms.CharField(widget=forms.PasswordInput)
+#
+#     class Meta:
+#         model = User
+#         fields = ['username', 'email', 'password', 'password_confirm']
+#
+#     def clean(self):
+#         cleaned_data = super().clean()
+#         if cleaned_data['password'] != cleaned_data['password_confirm']:
+#             raise forms.ValidationError("Passwords do not match.")
+#         return cleaned_data
 
 class LoginUserForm(AuthenticationForm):
     """
